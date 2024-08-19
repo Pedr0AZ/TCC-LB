@@ -1,7 +1,0 @@
-ooooiii, eu coloquei minha conta do git no vscode, e
-parece que isso me deu acesso ao repositório
-
-Consegui clonar o repositório sem o git bash, o problema
-agora seria ver como eu salvaria e passaria os dados pro git
-
-Ok, agora estou testando a alteração de um arquivo já existente
