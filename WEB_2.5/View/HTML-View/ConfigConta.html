@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Configurações da Conta</title>
+    <!-- <meta name="description" content=""> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="CSS/ConfigConta.css">
+</head>
+
+<body>
+    <div> <!-- Div do menu horizontal-->
+    </div>
+
+    <div class="container">
+
+        <div class="profile-section">
+            <h1>Foto de Perfil</h1>
+            <form action="/update-profile" method="post">
+                <!-- Imagem de perfil e botão para alterar -->
+                <img class="profile" src="CSS/IMAGEM/JPEG/perfil.jpeg" alt="Perfil">
+                <input type="file" name="profile-picture" accept="image/*">
+                <button type="submit">Alterar Imagem</button>
+            </form>
+        </div>
+
+        <div class="form-container">
+            <h1>Informações da Conta</h1>
+            <form action="/update-data" method="POST"> <!--Na verdade, tinha q exibir e só quando apertar o botão de alterar dados que daria pra inserir ou alterar-->
+                <div class="input-container">
+                    <input type="text" id="nome" name="nome" required placeholder="" autocomplete="off">
+                    <label for="nome">Nome de Exibição</label>
+                </div>
+                <div class="input-container">
+                    <input type="text" id="id" name="id" required placeholder="" autocomplete="off">
+                    <label for="id">Nome do Usuário</label>
+                </div>
+                <div class="input-container">
+                    <input type="email" id="email" name="email" required placeholder="" autocomplete="off">
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="senha" name="senha" required placeholder="" autocomplete="off">
+                    <label for="senha">Senha</label>
+                </div>
+                <div class="button-container">
+                    <button type="submit">Alterar Dados</button>
+                    <button type="button" onclick="confirm('Tem certeza de que deseja excluir sua conta?')">Excluir Conta</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    
+</body>
+
+</html>

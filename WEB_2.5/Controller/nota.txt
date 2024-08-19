@@ -1,0 +1,2 @@
+Aqui ficarão as ligações entre páginas e banco de dados, com PHP e com Python se necessário.
+Quem sabe até JavaScript

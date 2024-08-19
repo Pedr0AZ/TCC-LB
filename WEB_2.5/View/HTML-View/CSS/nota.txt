@@ -1,0 +1,5 @@
+Como normalmente CSS é usado em conjunto ao html, eu criei 
+a pasta de CSS junto da HTML. Me avisem se vocês acharem que
+seja mais apropriado deixar o CSS fora da pasta de HTML
+
+O mesmo vale para as pastas de fonte e imagens
