@@ -1,10 +1,10 @@
-create database bdtcc;
+CREATE DATABASE bdtcc;
 
-use bdtcc;
+USE bdtcc;
 
-create table usuarios (
-    nome varchar(30) primary key,
-    email varchar(50),
-    senha varchar(50),
-    apelido varchar(20)
-)
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,  
+    nome VARCHAR(30) NOT NULL,          
+    email VARCHAR(50) NOT NULL UNIQUE,  
+    senha VARCHAR(255) NOT NULL        
+);
