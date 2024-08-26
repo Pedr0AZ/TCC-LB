@@ -2,4 +2,4 @@ Aqui vai ficar a parte de Python, javascript, ou sla qual linguagem for utilizad
 a lógica das atividades
 
 A captura de câmera também ficará aqui dependendo como ela funcionará (se vai ser uma
-aplicação a parte ou se vai ficar tudo dentro do site, precisamos debater sobre isso)
+aplicação a parte ou se vai ficar tudo dentro do site, precisamos 
