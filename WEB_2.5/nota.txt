@@ -1,2 +1,0 @@
-Tentem deixar dentro das pastas como foi organizado, e recomendo verem
-sobre arquitetura MVC
