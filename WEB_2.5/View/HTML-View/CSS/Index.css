@@ -11,22 +11,24 @@ body {
 }
 
 header {
+  top: 0;
+  width: 100%;
+  position: fixed;
   background-color: #fff;
-  box-shadow: 0 5px 8px rgba(255, 255, 255, 0.945);
+  border-bottom: 2px solid #33333375;
 }
 
 .navbar {
-  border-bottom: 2px solid #333;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1200vw;
   margin: 0 auto;
-  padding: 20px 5vw;
+  padding: 2vh 4vw;
 }
 
 .logo a {
-  font-size: 30px;
+  font-size: 4vh;
   font-weight: bold;
   color: #0032d6;
   text-decoration: none;
@@ -42,16 +44,15 @@ header {
 }
 
 .nav-links a {
-  color: #333;
+  color: #333333;
   text-decoration: none;
-  font-size: 22px;
-  padding: 10px 15px;
+  font-size: 2vw;
+  padding: 1vw 2vh;
   transition: background-color 0.3s ease, color 0.3s ease;
-  border-radius: 4px;
 }
 
 .nav-links a:hover {
-  background-color: #f0f0f0;
+  background-color: #f0f0f0c4;
   color: #0032d6;
 }
 
@@ -210,8 +211,6 @@ to {
 
 
 /* CARD DE CADASTRO */
-
-/* Mantenha o CSS existente e adicione o seguinte */
 #signupCard {
   background: white;
   padding: 20px;
@@ -220,108 +219,13 @@ to {
   animation: fadeIn 0.4s ease-in-out;
 }
 
-
-
-/* CARROSSEL */
-
-.carousel-container {
-position: relative;
-width: 100%;
-overflow: hidden;
-}
-
-.carousel-slide {
-display: flex;
-transition: transform 0.4s ease-in-out;
-width: 100%;
-}
-
-.carousel-item {
-min-width: 100%;
-transition: transform 0.4s ease-in-out;
-position: relative; /* Necessário para posicionar o botão */
-}
-
-.carousel-item img {
-width: 100%;
-height: 500px;
-display: block;
-}
-
-.prev-btn, .next-btn {
-position: absolute;
-top: 50%;
-transform: translateY(-50%);
-background-color: rgba(0, 0, 0, 0.5);
-border: none;
-padding: 10px;
-color: white;
-font-size: 18px;
-cursor: pointer;
-z-index: 10;
-}
-
-.prev-btn {
-left: 10px;
-}
-
-.next-btn {
-right: 10px;
-}
-
-.prev-btn:hover, .next-btn:hover {
-background-color: rgba(0, 0, 0, 0.8);
-}
-
-.carousel-dots {
-text-align: center;
-position: absolute;
-bottom: 10px;
-width: 100%;
-display: flex;
-justify-content: center;
-}
-
-.carousel-dots .dot {
-height: 15px;
-width: 15px;
-margin: 0 5px;
-background-color: rgba(0, 0, 0, 0.5);
-border-radius: 50%;
-display: inline-block;
-cursor: pointer;
-transition: background-color 0.3s ease;
-}
-
-.carousel-dots .dot.active {
-background-color: rgba(255, 255, 255, 0.9);
-}
-
-.special-btn {
-position: absolute;
-top: 50%;
-left: 30%;
-transform: translate(-50%, -50%);
-background-color: #f00; /* Cor do botão */
-color: #fff; /* Cor do texto do botão */
-border: none;
-padding: 10px 20px;
-font-size: 16px;
-cursor: pointer;
-border-radius: 5px;
-z-index: 20; /* Garantir que o botão esteja sobre as imagens */
-opacity: 0; /* Inicialmente invisível */
-transition: opacity 0.8s ease-in-out; /* Transição para fade-in e fade-out */
-}
-
-.special-btn.show {
-opacity: 1; /* Tornar o botão visível */
-}
-
-
 /* AREA DE TEXTO E IMAGENS INFORMATIVO */
 
 .section {
+  margin-bottom: 5vh;
+  margin-top: 20vh;
+margin-left: 10vw;
+margin-right: 10vw;
 display: flex;
 align-items: center;
 justify-content: space-between;
@@ -329,28 +233,24 @@ padding: 20px;
 background-color: #fff; /* ou outra cor de fundo */
 }
 
-.section.reverse {
-flex-direction: row-reverse; /* Inverte a ordem dos elementos */
-}
-
 .text-content {
 max-width: 50%; /* controla a largura do texto */
 }
 
 .text-content h2 {
-font-size: 2rem;
+font-size: 5vh;
 margin-bottom: 1rem;
 }
 
 .text-content p {
-font-size: 1rem;
+font-size: 2vh;
 margin-bottom: 1.5rem;
 color: #333;
 }
 
 .cta-button {
-padding: 10px 20px;
-font-size: 1rem;
+padding: 2vh 5vh;
+font-size: 1vw;
 color: #fff;
 background-color: #000;
 border: none;
@@ -364,7 +264,8 @@ background-color: #333; /* cor de fundo ao passar o mouse */
 }
 
 .image-content {
-max-width: 45%; /* controla a largura da imagem */
+  margin-left: 2vw;
+max-width: 30%; /* controla a largura da imagem */
 }
 
 .image-content img {
@@ -372,3 +273,58 @@ width: 100%;
 height: auto;
 border-radius: 10px; /* ou outro valor para ajustar as bordas */
 }
+
+
+/* BANNER */
+
+/* Estilo do banner */
+.banner {
+  width: 100%;
+  height: 80vh; /* Altura do banner */
+  background-image: url('IMAGEM/JPEG/Banner\ -\ Libras.jpg'); /* Substitua pela URL da sua imagem */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px; /* Espaço para o menu fixo */
+}
+
+.banner-text {
+  margin-right: 50vw;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombras no texto para melhor leitura */
+}
+
+.banner h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.banner p {
+  font-size: 24px;
+}
+
+/* BOTAO DENTRO DO BANNER */
+
+.buttonBanner {
+  border: 2px solid #fcfcfc;
+  background-color: #0092db;
+  border-radius: 0.9em;
+  padding: 0.8em 1.2em 0.8em 1em;
+  transition: all ease-in-out 0.2s;
+  font-size: 16px;
+ }
+ 
+ .buttonBanner span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: 600;
+ }
+ 
+ .buttonBanner:hover {
+  background-color: #0071e2;
+ }
