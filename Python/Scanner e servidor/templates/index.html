@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executar e Parar Script Python</title>
+</head>
+<body>
+    <h1>Controle de Execução do Script Python</h1>
+    
+    <!-- Botão para executar o script -->
+    <button id="runScriptBtn">Executar Script</button>
+    
+    <!-- Botão para parar o script -->
+    <button id="stopScriptBtn">Parar Script</button>
+    
+    <!-- Parágrafo para exibir o status -->
+    <p id="status"></p>
+
+    <script>
+        document.getElementById('runScriptBtn').addEventListener('click', function() {
+            fetch('/run-script', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('status').innerText = data.status;
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    document.getElementById('status').innerText = 'Erro ao tentar executar o script';
+                });
+        });
+
+        document.getElementById('stopScriptBtn').addEventListener('click', function() {
+            fetch('/stop-script', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('status').innerText = data.status;
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    document.getElementById('status').innerText = 'Erro ao tentar parar o script';
+                });
+        });
+    </script>
+</body>
+</html>
