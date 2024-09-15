@@ -11,7 +11,7 @@
     <header>
         <nav class="navbar">
             <div class="logo">
-                <a href="Index.html">SinaLibras</a>
+                <a href="Index.php">SinaLibras</a>
             </div>
             <ul class="nav-links">
                 <li><a href="Mda.html" id="Mda-btn">Atividades</a></li>
@@ -100,7 +100,7 @@
 
         <!-- Card de Cadastro -->
         <div id="signupCard" class="hidden">
-            <form action="../../Controller/PHP-Controller/cadastro.php" method="POST" class="form">
+            <form action="../Controller/PHP-Controller/cadastro.php" method="POST" class="form">
                 <div class="flex-column">
                     <h1>Cadastro</h1>
                     <br>
