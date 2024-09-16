@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -104,6 +106,14 @@
                 <div class="flex-column">
                     <h1>Cadastro</h1>
                     <br>
+                    <?php
+                      if (isset($_SESSION['mensagem_cadastro'])) {
+                        echo $_SESSION['mensagem_cadastro'];
+                        echo "<br> <br>";
+                        //echo '<div class="mensagem">' . $_SESSION['mensagem_cadastro'] . '</div>';
+                        unset($_SESSION['mensagem_cadastro']);  // Remove a mensagem da sessão
+                      }
+                    ?>
                     <label>Nome </label>
                     <div class="inputForm">
                         <input placeholder="Nome" class="input" type="text" name="nome" id="nome" required> 

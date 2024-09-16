@@ -2,10 +2,11 @@
 include_once '../../Model/conexao.php';
 
 //precisa fazer com que o botão de cadastrar redirecione pro index e só deixa a mensagem lá
-//tbm tire a mensagem de conexão feita com sucesso do conexao.php
 //por conta do SESSION o index vai ficar index.php, aí vai ter que alterar o final dos Indexs declarados
 
 try {
+    session_start();
+
     // Verifica se os dados foram enviados via POST
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $nome = trim($_POST['nome']);
@@ -14,7 +15,8 @@ try {
 
         // Validação básica dos dados
         if (empty($nome) || empty($email) || empty($senha)) {
-            echo "Por favor, preencha todos os campos obrigatórios.";
+            $_SESSION['mensagem_cadastro'] = "Por favor, preencha todos os campos obrigatórios.";
+            header ('location: ../../View/Index.php');
             exit();
         }
 
@@ -25,7 +27,8 @@ try {
         $stmt->execute();
 
         if ($stmt->fetchColumn() > 0) {
-            echo "O email já está cadastrado.";
+            $_SESSION['mensagem_cadastro'] = "O email já está cadastrado.";
+            header ('location: ../../View/Index.php');
             exit();
         }
 
@@ -37,7 +40,8 @@ try {
         $stmt->bindParam(':senha', password_hash($senha, PASSWORD_DEFAULT)); // Use hash para armazenar a senha
 
         if ($stmt->execute()) {
-            echo "Cadastro realizado com sucesso!";
+            $_SESSION['mensagem_cadastro'] = "Cadastro realizado com sucesso!";
+            header ('location: ../../View/Index.php');
             exit();
         } else {
             throw new Exception("Erro ao realizar o cadastro.");
