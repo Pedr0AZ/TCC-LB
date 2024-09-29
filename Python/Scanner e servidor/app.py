@@ -17,7 +17,7 @@ def run_script():
     global process
     try:
         # Executa o script em um processo separado
-        process = subprocess.Popen(['python', 'snaacer limoes.py'])
+        process = subprocess.Popen(['python', 'C:\\Users\\Victhor Coppola\\Desktop\\TCC-LB\\Python\\Scanner e servidor\\Escaner_maos.py'])
         return jsonify({'status': 'Script rodando...'})
     except Exception as e:
         return jsonify({'status': 'Erro ao rodar o script', 'error': str(e)})
@@ -38,3 +38,4 @@ def stop_script():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
