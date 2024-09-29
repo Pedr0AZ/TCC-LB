@@ -4,7 +4,7 @@ import mediapipe as mp
 import numpy as np
 
 # Carregar o dicionário do arquivo pickle
-modal_dict = pickle.load(open('./model.p', 'rb'))
+modal_dict = pickle.load(open('C:\\Users\\Victhor Coppola\\Desktop\\TCC-LB\\Python\\Scanner e servidor\\model.p', 'rb'))
 # Acessar o modelo através do dicionário carregado
 model = modal_dict['model']
 
