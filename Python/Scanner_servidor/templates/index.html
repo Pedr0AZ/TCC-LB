@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escâner de Mãos</title>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>Escâner de Mãos</h1>
+    <button id="start">Iniciar Escaneamento</button>
+    <div id="output"></div>
+
+    <script>
+        const socket = io();
+
+        document.getElementById('start').onclick = function() {
+            socket.emit('start_scanner');
+        };
+
+        socket.on('scanner_update', function(msg) {
+            document.getElementById('output').innerHTML += '<p>' + msg.data + '</p>';
+        });
+
+        socket.on('scanner_complete', function(msg) {
+            document.getElementById('output').innerHTML += '<p><strong>' + msg.data + '</strong></p>';
+        });
+    </script>
+</body>
+</html>
