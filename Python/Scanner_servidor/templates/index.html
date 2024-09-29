@@ -3,27 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escâner de Mãos</title>
-    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <title>Executar e Parar Script Python</title>
 </head>
 <body>
-    <h1>Escâner de Mãos</h1>
-    <button id="start">Iniciar Escaneamento</button>
-    <div id="output"></div>
+    <h1>Controle de Execução do Script Python</h1>
+    
+    <!-- Botão para executar o script -->
+    <button id="runScriptBtn">Executar Script</button>
+    
+    <!-- Botão para parar o script -->
+    <button id="stopScriptBtn">Parar Script</button>
+    
+    <!-- Parágrafo para exibir o status -->
+    <p id="status"></p>
 
     <script>
-        const socket = io();
-
-        document.getElementById('start').onclick = function() {
-            socket.emit('start_scanner');
-        };
-
-        socket.on('scanner_update', function(msg) {
-            document.getElementById('output').innerHTML += '<p>' + msg.data + '</p>';
+        document.getElementById('runScriptBtn').addEventListener('click', function() {
+            fetch('/run-script', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('status').innerText = data.status;
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    document.getElementById('status').innerText = 'Erro ao tentar executar o script';
+                });
         });
 
-        socket.on('scanner_complete', function(msg) {
-            document.getElementById('output').innerHTML += '<p><strong>' + msg.data + '</strong></p>';
+        document.getElementById('stopScriptBtn').addEventListener('click', function() {
+            fetch('/stop-script', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('status').innerText = data.status;
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    document.getElementById('status').innerText = 'Erro ao tentar parar o script';
+                });
         });
     </script>
 </body>
