@@ -1,9 +1,6 @@
 <?php
 include_once '../../Model/conexao.php';
 
-//precisa fazer com que o botão de cadastrar redirecione pro index e só deixa a mensagem lá
-//por conta do SESSION o index vai ficar index.php, aí vai ter que alterar o final dos Indexs declarados
-
 try {
     session_start();
 

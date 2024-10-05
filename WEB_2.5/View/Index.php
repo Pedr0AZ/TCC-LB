@@ -75,7 +75,7 @@
                 <div class="flex-row">
                     <span class="span">Esqueceu sua senha?</span> 
                 </div>
-                <input type="submit" class="button9-submit" value="Entrar">
+                <input type="submit" class="button9-submit" value="Entrar" id="login-submit">
                 <p class="p">Não tem uma conta?<span class="span" id="create-account-link">Criar conta</span></p> 
                 <p class="p line">Ou cadastre-se com:</p> 
                 <div class="flex-row">
@@ -116,25 +116,25 @@
                     ?>
                     <label>Nome </label>
                     <div class="inputForm">
-                        <input placeholder="Nome" class="input" type="text" name="nome" id="nome" required> 
+                        <input placeholder="Nome" class="input" type="text" name="nome" id="nome" > 
                     </div>
                 </div>
                 <div class="flex-column">
                     <label>E-mail </label>
                     <div class="inputForm">
-                        <input placeholder="E-mail" class="input" type="text" name="email" id="email" required> 
+                        <input placeholder="E-mail" class="input" type="text" name="email" id="email" > 
                     </div>
                 </div>
                 <div class="flex-column">
                     <label>Senha </label>
                     <div class="inputForm">       
-                        <input placeholder="Senha" class="input" type="password" name="senha" id="senha" required> 
+                        <input placeholder="Senha" class="input" type="password" name="senha" id="senha" > 
                     </div>
                 </div>
                 <div class="flex-row">
                     <label>Já tem uma conta?<span class="span" id="login-link">Login</span> </label>
                 </div>
-                <input type="submit" class="button9-submit" value="Cadastrar">
+                <input type="submit" class="button9-submit" value="Cadastrar" id="signup-submit">
             </form>
         </div>
     </div>
