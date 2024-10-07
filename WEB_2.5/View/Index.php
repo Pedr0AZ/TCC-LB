@@ -57,19 +57,19 @@
     <div id="overlay" class="hidden">
         <!-- Card de Login -->
         <div id="loginCard">
-            <form class="form">
+            <form action="../Controller/PHP-Controller/login.php" method="POST" class="form">
                 <div class="flex-column">
                     <h1>Login</h1>
                     <br>
                     <label>E-mail </label>
                     <div class="inputForm">
-                        <input placeholder="E-mail" class="input" type="text" name="email" id="email" required> 
+                        <input placeholder="E-mail" class="input" type="text" name="email" id="email" > 
                     </div>
                 </div>
                 <div class="flex-column">
                     <label>Senha </label>
                     <div class="inputForm">       
-                        <input placeholder="Senha" class="input" type="password" name="senha" id="senha" required> 
+                        <input placeholder="Senha" class="input" type="password" name="senha" id="senha" > 
                     </div>
                 </div>
                 <div class="flex-row">
