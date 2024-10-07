@@ -17,6 +17,12 @@ try {
             exit();
         }
 
+        if (strlen($senha) < 8) {
+            $_SESSION['mensagem_cadastro'] = "A senha deve ter no mínimo 8 caracteres";
+            header ('location: ../../View/Index.php');
+            exit();
+        }
+
         // Verifica se o email já está cadastrado
         $sql = "SELECT COUNT(*) FROM usuarios WHERE email = :email";
         $stmt = $conn->prepare($sql);
