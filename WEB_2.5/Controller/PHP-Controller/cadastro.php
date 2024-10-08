@@ -25,7 +25,7 @@ try {
 
         // Verifica se o email já está cadastrado
         $sql = "SELECT COUNT(*) FROM usuarios WHERE email = :email";
-        $stmt = $conn->prepare($sql);
+        $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
 
@@ -37,7 +37,7 @@ try {
 
         // Insere os dados no banco de dados
         $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
-        $stmt = $conn->prepare($sql);
+        $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':senha', password_hash($senha, PASSWORD_DEFAULT)); // Use hash para armazenar a senha

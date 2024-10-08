@@ -111,7 +111,7 @@
                         </svg>
                         Google
                     </button>
-                    <button id="go-to-mda" class="button9-submit hidden">Ir para o Menu de Atividades</button>
+                    <button id="go-to-mda" class="button9-submit">Ir para o Menu de Atividades</button>
                 </div>
             </form>
         </div>
