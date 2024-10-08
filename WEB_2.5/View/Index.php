@@ -61,6 +61,21 @@
                 <div class="flex-column">
                     <h1>Login</h1>
                     <br>
+                    <?php
+                      if (isset($_SESSION['mensagem_login'])){
+                        if ($_SESSION['mensagem_login'] === "Senha incorreta, por favor tente novamente"
+                         || $_SESSION['mensagem_login'] === "Email não encontrado" ) {
+                            echo '<div id="error-message">' . $_SESSION['mensagem_login'] . '</div>';
+                            echo "<br>";
+                            unset($_SESSION['mensagem_login']);  // Remove a mensagem da sessão
+                        }else {
+                            echo $_SESSION['mensagem_login'];
+                            echo "<br> <br>";
+                            //echo '<div class="mensagem">' . $_SESSION['mensagem_cadastro'] . '</div>';
+                            unset($_SESSION['mensagem_login']);  // Remove a mensagem da sessão
+                        }
+                      }
+                    ?>
                     <label>E-mail </label>
                     <div class="inputForm">
                         <input placeholder="E-mail" class="input" type="text" name="email" id="email" > 
@@ -96,6 +111,7 @@
                         </svg>
                         Google
                     </button>
+                    <button id="go-to-mda" class="button9-submit hidden">Ir para o Menu de Atividades</button>
                 </div>
             </form>
         </div>

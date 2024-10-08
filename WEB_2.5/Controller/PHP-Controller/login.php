@@ -1,58 +1,49 @@
 <?php
-include_once '../../Model/conexao.php';
-
-//Ver o código com o ChatGPT dps
-//O vídeo q eu estava vendo em sala: https://youtu.be/GX7eWpBSHzs
-//fazer um campo no banco de dados que detecta se o usuário está ativo ou não
-//dar a opção dele ir para o menu de atividades assim que logar
+session_start();
+require '../../Model/conexao.php'; 
 
 try {
-    session_start();
-
-    // Verifica se os dados foram enviados via POST
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $email = addslashes($_POST['email']);
-        $senha =  addslashes($_POST['senha']);
+        $email = addslashes($_POST['email'] ?? '');
+        $senha = addslashes($_POST['senha'] ?? '');
 
-        // Validação básica dos dados
-        if (empty($nome) || empty($email) || empty($senha)) {
+        if (empty($email) || empty($senha)) {
             $_SESSION['mensagem_login'] = "Por favor, preencha todos os campos obrigatórios.";
-            header ('location: ../../View/Index.php');
+            header('location: ../../View/Index.php');
             exit();
         }
 
-        if (strlen($senha) < 8) {
-            $_SESSION['mensagem_login'] = "A senha deve ter no mínimo 8 caracteres";
-            header ('location: ../../View/Index.php');
-            exit();
-        }
+        $sql = 'SELECT * FROM usuarios WHERE email = :email';
+        $stmt = $pdo->prepare($sql); 
+        $stmt->execute(['email' => $email]);
+        $usuario = $stmt->fetch();
 
-        // Verifica se o email já está cadastrado
-        $sql = "SELECT COUNT(*) FROM usuarios WHERE email = :email";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':email', $email);
-        $stmt->execute();
+        if ($usuario) {
 
-        if ($stmt->fetchColumn() > 0) {
-            $_SESSION['mensagem_login'] = "O email já está cadastrado.";
-            header ('location: ../../View/Index.php');
-            exit();
-        }
+            if (password_verify($senha, $usuario['senha'])) {
 
-        //escrever o comando pra dar acesso à conta?
-
-        if ($stmt->execute()) {
-            $_SESSION['mensagem_login'] = "Login realizado com sucesso!";
-            header ('location: ../../View/Index.php');
-            exit();
+                $_SESSION['usuario_id'] = $usuario['id'];
+                $_SESSION['usuario_nome'] = $usuario['nome'];
+                $_SESSION['mensagem_login'] = "Login realizado com sucesso!";
+                $_SESSION['logado'] = true; 
+                
+                header('location: ../../View/Index.php');
+                exit();
+            } else {
+                $_SESSION['mensagem_login'] = "Senha incorreta, por favor tente novamente";
+                header('location: ../../View/Index.php');
+                exit();
+            }
         } else {
-            throw new Exception("Erro ao realizar o login.");
+            $_SESSION['mensagem_login'] = "Email não encontrado";
+            header('location: ../../View/Index.php');
+            exit();
         }
     }
-} catch (Exception $e) {
-    echo "Erro: " . $e->getMessage();
+} catch (PDOException $e) {
+    $_SESSION['mensagem_login'] = "Erro no login: " . $e->getMessage(); //erro no banco de dados
+    header('location: ../../View/Index.php');
     exit();
 }
-?>
 
 ?>

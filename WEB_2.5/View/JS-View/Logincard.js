@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const signupCard = document.getElementById("signupCard");
     const submitLogin = document.getElementById("login-submit"); 
     const submitSignup = document.getElementById("signup-submit"); 
+    const goToMda = document.getElementById("go-to-mda");
 
     let formSubmitted = false; //detectar se um formulário foi enviado
 
