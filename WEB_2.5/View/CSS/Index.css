@@ -172,6 +172,32 @@ width: 100%;
 cursor: pointer;
 }
 
+.button-mda {
+  margin: 20px 0 10px 0;
+  background-color: #fcf74e;
+  border: none;
+  color: #151717;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 10px;
+  height: 50px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.button-mda:hover {
+  margin: 20px 0 10px 0;
+  background-color: #c4b42d;
+  border: none;
+  color: #151717;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 10px;
+  height: 50px;
+  width: 100%;
+  cursor: pointer;
+  }
+
 .p {
 text-align: center;
 color: black;

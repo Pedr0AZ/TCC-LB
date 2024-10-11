@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const submitLogin = document.getElementById("login-submit"); 
     const submitSignup = document.getElementById("signup-submit"); 
     const goToMda = document.getElementById("go-to-mda");
+    const message = document.getElementById("message");
+    const pLogin = document.getElementById("login-p");
 
     let formSubmitted = false; //detectar se um formulário foi enviado
 
@@ -22,6 +24,12 @@ document.addEventListener("DOMContentLoaded", function() {
         overlay.style.display = "none"; // Oculta o overlay se não houver estado
         loginCard.classList.add("hidden");
         signupCard.classList.add("hidden");
+    }
+
+    if (message && message.innerText.includes("Login realizado com sucesso!")) { 
+        goToMda.classList.remove("hidden"); // Mostra o botão de "Ir para o Menu de Atividades"
+        pLogin.classList.add("hidden");
+        submitLogin.classList.add("hidden");
     }
 
     document.getElementById("login-btn").addEventListener("click", function() {
@@ -60,9 +68,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     submitSignup.addEventListener("click", function() {
-        // Aqui você pode adicionar lógica para o cadastro, como validação
         sessionStorage.setItem('currentCard', 'signup'); 
         formSubmitted = true; 
+    });
+
+    goToMda.addEventListener("click", function() {
+        window.location.href = "Mda.html"; // Redireciona para o menu de atividades
     });
 
     window.addEventListener("beforeunload", function() {

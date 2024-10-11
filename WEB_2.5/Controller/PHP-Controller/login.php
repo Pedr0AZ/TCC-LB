@@ -4,8 +4,8 @@ require '../../Model/conexao.php';
 
 try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $email = addslashes($_POST['email'] ?? '');
-        $senha = addslashes($_POST['senha'] ?? '');
+        $email = addslashes($_POST['email'] );
+        $senha = addslashes($_POST['senha'] );
 
         if (empty($email) || empty($senha)) {
             $_SESSION['mensagem_login'] = "Por favor, preencha todos os campos obrigatórios.";
