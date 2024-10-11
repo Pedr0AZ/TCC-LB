@@ -30,6 +30,12 @@ document.addEventListener("DOMContentLoaded", function() {
         goToMda.classList.remove("hidden"); // Mostra o botão de "Ir para o Menu de Atividades"
         pLogin.classList.add("hidden");
         submitLogin.classList.add("hidden");
+
+        goToMda.addEventListener("click", function() {
+            event.preventDefault();
+            console.log("Botão 'Ir para o Menu de Atividades' clicado!");
+            window.location.href = "Mda.html"; // Redireciona para o menu de atividades
+        });
     }
 
     document.getElementById("login-btn").addEventListener("click", function() {
@@ -70,10 +76,6 @@ document.addEventListener("DOMContentLoaded", function() {
     submitSignup.addEventListener("click", function() {
         sessionStorage.setItem('currentCard', 'signup'); 
         formSubmitted = true; 
-    });
-
-    goToMda.addEventListener("click", function() {
-        window.location.href = "Mda.html"; // Redireciona para o menu de atividades
     });
 
     window.addEventListener("beforeunload", function() {

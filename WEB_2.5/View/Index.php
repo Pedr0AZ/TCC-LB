@@ -74,13 +74,13 @@
                         }
                       }
                     ?>
-                    <label>E-mail </label>
+                    <label for="email">E-mail </label>
                     <div class="inputForm">
                         <input placeholder="E-mail" class="input" type="text" name="email" id="email" > 
                     </div>
                 </div>
                 <div class="flex-column">
-                    <label>Senha </label>
+                    <label for="senha">Senha </label>
                     <div class="inputForm">       
                         <input placeholder="Senha" class="input" type="password" name="senha" id="senha" > 
                     </div>
@@ -91,7 +91,7 @@
                 <input type="submit" class="button9-submit" value="Entrar" id="login-submit">
                 <p class="p" id="login-p">Não tem uma conta?<span class="span" id="create-account-link">Criar conta</span></p> 
                 <div class="flex-row">
-                    <button id="go-to-mda" class="button-mda">Ir para o Menu de Atividades</button>
+                    <button id="go-to-mda" class="button-mda hidden">Ir para o Menu de Atividades</button>
                 </div>
             </form>
         </div>
@@ -110,25 +110,25 @@
                         unset($_SESSION['mensagem_cadastro']);  // Remove a mensagem da sessão
                       }
                     ?>
-                    <label>Nome </label>
+                    <label for="nome">Nome </label>
                     <div class="inputForm">
                         <input placeholder="Nome" class="input" type="text" name="nome" id="nome" > 
                     </div>
                 </div>
                 <div class="flex-column">
-                    <label>E-mail </label>
+                    <label for="email">E-mail </label>
                     <div class="inputForm">
                         <input placeholder="E-mail" class="input" type="text" name="email" id="email" > 
                     </div>
                 </div>
                 <div class="flex-column">
-                    <label>Senha </label>
+                    <label for="senha">Senha </label>
                     <div class="inputForm">       
                         <input placeholder="Senha" class="input" type="password" name="senha" id="senha" > 
                     </div>
                 </div>
                 <div class="flex-row">
-                    <label>Já tem uma conta?<span class="span" id="login-link">Login</span> </label>
+                    <p>Já tem uma conta?<span class="span" id="login-link">Login</span> </p>
                 </div>
                 <input type="submit" class="button9-submit" value="Cadastrar" id="signup-submit">
             </form>
