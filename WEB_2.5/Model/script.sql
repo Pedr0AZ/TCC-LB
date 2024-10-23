@@ -8,3 +8,5 @@ CREATE TABLE usuarios (
     email VARCHAR(50) NOT NULL UNIQUE,  
     senha VARCHAR(255) NOT NULL        
 );
+
+criar uma outra tabela das atividades(pra salvar o progresso) com uma foreign key do usuario
