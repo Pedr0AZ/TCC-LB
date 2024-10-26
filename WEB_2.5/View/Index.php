@@ -14,7 +14,7 @@
         <div class="banner-text">
           <h1>Aprenda Libras de forma <br> 
                     prática!</h1>
-          <a href="Mda.html"><button class="buttonBanner"><span>Começar</span></button></a>
+          <a href="Mda.php"><button class="buttonBanner"><span>Começar</span></button></a>
           
         </div>
       </div>

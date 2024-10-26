@@ -17,7 +17,7 @@
                     <a href="Index.php">SinaLibras</a>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="Mda.html" id="Mda-btn">Atividades</a></li>
+                    <li><a href="Mda.php" id="Mda-btn">Atividades</a></li>
                     <li><a href="#" id="login-btn">Login</a></li>
                 </ul>
             </nav>
