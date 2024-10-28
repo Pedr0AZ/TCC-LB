@@ -67,6 +67,10 @@ document.addEventListener("DOMContentLoaded", function() {
         sessionStorage.setItem('currentCard', 'login'); 
     });
 
+    document.getElementById("perfil").addEventListener("click", function() {
+        alert("Perfil clicado!");
+    });    
+
     submitLogin.addEventListener("click", function() {
         // Aqui você pode adicionar lógica para o login, como validação
         sessionStorage.setItem('currentCard', 'login'); 

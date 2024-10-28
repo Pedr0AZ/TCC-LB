@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php
+session_start();
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -16,12 +19,39 @@
                 <div class="logo">
                     <a href="Index.php">SinaLibras</a>
                 </div>
-                <ul class="nav-links">
-                    <li><a href="Mda.php" id="Mda-btn">Atividades</a></li>
-                    <li><a href="#" id="login-btn">Login</a></li>
-                </ul>
+                <div class="end">
+                    <ul class="nav-links">
+                        <li><a href="Mda.php" id="Mda-btn">Atividades</a></li>
+                        <li><a href="#" id="login-btn">Login</a></li>
+                    </ul>
+                    <div class="perfil" id="perfil">
+                        <img src="CSS/IMAGEM/PNG/perfil2.png" class="user-pic" alt="Foto de perfil">
+                    </div>
+                </div>
             </nav>
     </header>
+
+    <!-- DropDown Menu do Perfil -->
+    <div id="perfilMenu-wrap" >
+        <div id="perfilMenu">
+            <div class= "user-info">
+                <div class="profile">
+                    <img src="CSS/IMAGEM/PNG/perfil2.png" class="user-pic" alt="Foto de perfil">
+                </div>
+                <?php
+                echo '<div class="perfilNome">' . "<h3>" . $_SESSION['usuario_nome'] . "</h3>" . '</div>';
+                ?>
+                <hr>
+            </div>
+            <div class="info-background">
+                <ul class=perfilMenu-link>
+                    <li><a href="#">Alterar Imagem</a></li>
+                    <li><a href="#">Configurações</a></li>
+                    <li><a href="#">Sair da Conta</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <div id="overlay" class="hidden">
         <!-- Card de Login -->

@@ -8,7 +8,7 @@ try {
         $nome = trim($_POST['nome']);
         $email = trim($_POST['email']);
         $senha = trim($_POST['senha']);
-        $returnUrl = $_GET['return_url'] ?? '/WEB_2.5/View/HTML-View/Index.php';  // Defina um padrão caso `return_url` esteja vazio
+        $returnUrl = $_GET['return_url'] ?? '../../View/Index.php';  // Defina um padrão caso `return_url` esteja vazio
 
         if (empty($nome) || empty($email) || empty($senha)) {
             $_SESSION['mensagem_cadastro'] = "Por favor, preencha todos os campos obrigatórios.";
@@ -16,8 +16,14 @@ try {
             exit();
         }
 
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $_SESSION['mensagem_cadastro'] = "Formato de email inválido.";
+            header("Location: $returnUrl");
+            exit();
+        }
+
         if (strlen($senha) < 8) {
-            $_SESSION['mensagem_cadastro'] = "A senha deve ter no mínimo 8 caracteres";
+            $_SESSION['mensagem_cadastro'] = "A senha deve ter no mínimo 8 caracteres.";
             header("Location: $returnUrl");
             exit();
         }
