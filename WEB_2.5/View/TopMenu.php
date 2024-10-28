@@ -22,17 +22,19 @@ session_start();
                 <div class="end">
                     <ul class="nav-links">
                         <li><a href="Mda.php" id="Mda-btn">Atividades</a></li>
-                        <li><a href="#" id="login-btn">Login</a></li>
+                            <li><a href="#" id="login-btn">Login</a></li>
                     </ul>
-                    <div class="perfil" id="perfil">
-                        <img src="CSS/IMAGEM/PNG/perfil2.png" class="user-pic" alt="Foto de perfil">
-                    </div>
+                    <?php if (isset($_SESSION['logado']) && $_SESSION['logado'] === true): ?>
+                        <div class="perfil" id="perfil">
+                            <img src="CSS/IMAGEM/PNG/perfil2.png" class="user-pic" alt="Foto de perfil">
+                        </div>
+                    <?php endif; ?>
                 </div>
             </nav>
     </header>
 
     <!-- DropDown Menu do Perfil -->
-    <div id="perfilMenu-wrap" >
+    <div id="perfilMenu-wrap" class="hidden">
         <div id="perfilMenu">
             <div class= "user-info">
                 <div class="profile">
@@ -46,8 +48,8 @@ session_start();
             <div class="info-background">
                 <ul class=perfilMenu-link>
                     <li><a href="#">Alterar Imagem</a></li>
-                    <li><a href="#">Configurações</a></li>
-                    <li><a href="#">Sair da Conta</a></li>
+                    <li><a href="ConfigConta.html">Configurações</a></li>
+                    <li><a href="../Controller/PHP-Controller/logout.php" style="color: red">Sair da Conta</a></li>
                 </ul>
             </div>
         </div>
