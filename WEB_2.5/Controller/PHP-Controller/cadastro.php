@@ -1,11 +1,12 @@
 <?php
 include_once '../../Model/conexao.php';
+include '../../Model/funcoes.php';
 
 try {
     session_start();
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $nome = trim($_POST['nome']);
+        $nome = $_POST['nome'];
         $email = trim($_POST['email']);
         $senha = trim($_POST['senha']);
         $returnUrl = $_GET['return_url'] ?? '../../View/Index.php';  // Defina um padrão caso `return_url` esteja vazio
@@ -39,18 +40,24 @@ try {
             exit();
         }
 
-        $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':senha', password_hash($senha, PASSWORD_DEFAULT));
+        if (validarNome($nome)) {
+            $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':senha', password_hash($senha, PASSWORD_DEFAULT));
 
-        if ($stmt->execute()) {
-            $_SESSION['mensagem_cadastro'] = "Cadastro realizado com sucesso!";
+            if ($stmt->execute()) {
+                $_SESSION['mensagem_cadastro'] = "Cadastro realizado com sucesso!";
+                header("Location: $returnUrl");
+                exit();
+            } else {
+                throw new Exception("Erro ao realizar o cadastro.");
+            }
+        }else {
+            $_SESSION['mensagem_cadastro'] = 'Nome Inválido.<br><br>O nome deve conter no mínimo 3 letras, não deve começar com números, espaços em branco nem conter caracteres especiais';
             header("Location: $returnUrl");
             exit();
-        } else {
-            throw new Exception("Erro ao realizar o cadastro.");
         }
     }
 } catch (Exception $e) {

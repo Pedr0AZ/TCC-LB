@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../../Model/conexao.php'; 
+require '../../Model/conexao.php';
 
 try {
     if (isset($_SESSION['logado']) && $_SESSION['logado'] === true) {
@@ -24,12 +24,6 @@ try {
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $_SESSION['mensagem_login'] = "Formato de email inválido.";
-            header("Location: $returnUrl");
-            exit();
-        }
-
-        if ($_SESSION['logado'] === true) {
-            $_SESSION['mensagem_login'] = "Não era para você estar aqui.";
             header("Location: $returnUrl");
             exit();
         }
