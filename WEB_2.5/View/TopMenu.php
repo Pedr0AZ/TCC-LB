@@ -48,7 +48,7 @@ session_start();
             <div class="info-background">
                 <ul class=perfilMenu-link>
                     <li><a href="#">Alterar Imagem</a></li>
-                    <li><a href="ConfigConta.html">Configurações</a></li>
+                    <li><a href="ConfigConta.php">Configurações</a></li>
                     <li><a href="../Controller/PHP-Controller/logout.php" style="color: red">Sair da Conta</a></li>
                 </ul>
             </div>
