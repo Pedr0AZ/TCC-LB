@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +82,8 @@ session_start();
                 <div class="flex-column">
                     <label for="senha">Senha </label>
                     <div class="inputForm">       
-                        <input placeholder="Senha" class="input" type="password" name="senha" id="senha" > 
+                        <input placeholder="Senha" class="input" type="password" name="senha" id="senha" >
+                        <span onclick="toggleSenha('senha', this)" class="eye-icon"></span>
                     </div>
                 </div>
                 <div class="flex-row">
@@ -125,7 +125,8 @@ session_start();
                 <div class="flex-column">
                     <label for="senha">Senha </label>
                     <div class="inputForm">       
-                        <input placeholder="Senha" class="input" type="password" name="senha" id="senha" > 
+                        <input placeholder="Senha" class="input" type="password" name="senha" id="senha2" >
+                        <span onclick="toggleSenha('senha2', this)" class="eye-icon"></span>
                     </div>
                 </div>
                 <div class="flex-row">
@@ -137,5 +138,6 @@ session_start();
     </div>
 
     <script src="JS-View/Logincard.js"></script>
+    <script src="JS-View/toggleSenha.js"></script>
 </body>
 </html>

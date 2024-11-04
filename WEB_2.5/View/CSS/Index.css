@@ -115,6 +115,25 @@ header {
   }
 }
 
+.eye-icon {
+  align-self: center;
+  position: absolute;
+  right: 10px;
+  top: 7%;
+  transform: translateY(50%);
+  width: 24px;
+  height: 24px;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/565/565655.png');
+  background-size: cover;
+  cursor: pointer;
+  transition: background-image 0.3s ease;
+  z-index: 5;
+}
+
+.eye-icon.active {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/709/709612.png');
+}
+
 /* CARD DE LOGIN */
 
 #overlay {
@@ -161,6 +180,7 @@ display: flex;
 align-items: center;
 padding-left: 10px;
 transition: 0.2s ease-in-out;
+position: relative;
 }
 
 .input {
@@ -286,11 +306,11 @@ to {
   top: 10%;
   right: 5%;
   width: 21vw;
-  z-index: 1000;
+  z-index: 10;
 }
 
 #perfilMenu {
-  background-color: #fdfbed;
+  background-color: #fffefb;
   padding-bottom: 2vh;
   border-radius: 7px;
 }
@@ -323,7 +343,7 @@ to {
   justify-content: center;
   display: flex;
   width: 100%;
-  background-color: #fdfcf6;
+  background-color: #fffefb;
 }
 
 .user-info h3 {
@@ -343,7 +363,7 @@ to {
 }
 
 .info-background { 
-  background: #fdfbed;
+  /* background: #fffefb; */
   border-radius: 0 0 7px 7px; 
 }
 

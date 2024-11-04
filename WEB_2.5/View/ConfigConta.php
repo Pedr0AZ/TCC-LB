@@ -1,5 +1,5 @@
 <?php
-include '../../Model/conexao.php';
+include (__DIR__ . '/../Model/conexao.php');  //se der erro, tire o __DIR__
 include 'TopMenu.php';
 ?>
 
@@ -50,49 +50,56 @@ include 'TopMenu.php';
         <!-- Painel Direito: Alterar Configurações -->
         <div class="right-panel">
             <h2>Configurações</h2>
-            <form action="/update-data" method="POST" >
-                <div class="input-container">
-                    <label for="nome">Nome de Exibição:</label>
-                    <input type="text" id="nome" name="nome" required autocomplete="off">
+                <!-- Sub Painel de opções -->
+                <div class="options">
                 </div>
-                <div class="input-container">
-                    <label for="nome">Email:</label>
-                    <input type="text" id="email" name="email" required autocomplete="off">
+                <!-- Sub Painel de trocar a senha -->
+                <div class="new-passwd hidden">
+                    <form action="/update-data" method="POST" >
+                        <div class="input-container">
+                            <label for="nome">Nome de Exibição:</label>
+                            <input type="text" id="nome" name="nome" required autocomplete="off">
+                        </div>
+                        <div class="input-container">
+                            <label for="nome">Email:</label>
+                            <input type="text" id="email" name="email" required autocomplete="off">
+                        </div>
+                        <div class="input-container">
+                            <label for="senha">Senha:</label>
+                            <div class="password-container">
+                                <input type="password" id="senha" name="nova-senha" required autocomplete="off">
+                                <span onclick="toggleSenha('senha', this)" class="eye-icon"></span>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <label for="nova-senha">Nova Senha:</label>
+                            <div class="password-container">
+                                <input type="password" id="nova-senha" name="nova-senha" required autocomplete="off">
+                                <span onclick="toggleSenha('nova-senha', this)" class="eye-icon"></span>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <label for="confirmar-senha">Confirmar Nova Senha:</label>
+                            <div class="password-container">
+                                <input type="password" id="confirmar-senha" name="confirmar-senha" required autocomplete="off">
+                                <span onclick="toggleSenha('confirmar-senha', this)" class="eye-icon"></span>
+                            </div>
+                        </div>
+                        <!-- <div class="input-container">
+                            <label for="imagem-perfil">Imagem de Perfil:</label>
+                            <input type="file" name="imagem-perfil" id="imagem-perfil" accept="image/*" onchange="previewImagem()">
+                            <img id="preview" class="profile-preview" src="" alt="Pré-visualização da Imagem" style="display:none;">
+                        </div> -->
+                        <div class="button-container">
+                            <button type="submit" class="red-btn">Cancelar</button>
+                            <button type="submit" class="yellow-btn">Salvar Alterações</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="input-container">
-                    <label for="senha">Senha:</label>
-                    <div class="password-container">
-                        <input type="password" id="nova-senha" name="nova-senha" required autocomplete="off">
-                        <span onclick="toggleSenha('nova-senha', this)" class="eye-icon"></span>
-                    </div>
-                </div>
-                <div class="input-container">
-                    <label for="nova-senha">Nova Senha:</label>
-                    <div class="password-container">
-                        <input type="password" id="nova-senha" name="nova-senha" required autocomplete="off">
-                        <span onclick="toggleSenha('nova-senha', this)" class="eye-icon"></span>
-                    </div>
-                </div>
-                <div class="input-container">
-                    <label for="confirmar-senha">Confirmar Nova Senha:</label>
-                    <div class="password-container">
-                        <input type="password" id="confirmar-senha" name="confirmar-senha" required autocomplete="off">
-                        <span onclick="toggleSenha('confirmar-senha', this)" class="eye-icon"></span>
-                    </div>
-                </div>
-                <!-- <div class="input-container">
-                    <label for="imagem-perfil">Imagem de Perfil:</label>
-                    <input type="file" name="imagem-perfil" id="imagem-perfil" accept="image/*" onchange="previewImagem()">
-                    <img id="preview" class="profile-preview" src="" alt="Pré-visualização da Imagem" style="display:none;">
-                </div> -->
-                <div class="button-container">
-                    <button type="submit" class="red-btn">Cancelar</button>
-                    <button type="submit" class="yellow-btn">Salvar Alterações</button>
-                </div>
-            </form>
         </div>
     </div>
 
     <script src="JS-View/toggleSenha.js"></script>
+    <script src="JS-View/panels.js"></script>
 </body>
 </html>
