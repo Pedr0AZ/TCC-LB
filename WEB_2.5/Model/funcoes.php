@@ -24,26 +24,43 @@ function validarNome($nome) {
 
 function validateInput($nome, $email, $novaSenha, $confirmarSenha) {
     $mensagens = [];
+
+    // Validação do nome
+    if (empty($_POST['nome'])) {
+        $mensagens['nome'] = 'O campo nome não pode ser vazio.';
+    } elseif (!preg_match("/^[a-zA-Z ]*$/", $_POST['nome'])) {
+        $mensagens['nome'] = 'Nome contém caracteres inválidos.';
+    }
     
-    if (empty($nome)) {
-        $mensagens['erro_nome'] = "O nome não pode estar vazio.";
+    // Validação do email
+    if (empty($_POST['email'])) {
+        $mensagens['email'] = 'O campo email não pode ser vazio.';
+    } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+        $mensagens['email'] = 'Email inválido.';
     }
-
-    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $mensagens['erro_email'] = "Por favor, insira um email válido.";
+    
+    // Validação da senha
+    if (empty($_POST['senha'])) {
+        $mensagens['senha'] = 'O campo senha não pode ser vazio.';
+    } elseif (strlen($_POST['senha']) < 6) {
+        $mensagens['senha'] = 'A senha deve ter no mínimo 6 caracteres.';
     }
-
-    if (!empty($novaSenha) || !empty($confirmarSenha)) {
-        if (strlen($novaSenha) < 8) {
-            $mensagens['erro_senha'] = "A senha deve ter no mínimo 8 caracteres.";
-        }
-
-        if ($novaSenha !== $confirmarSenha) {
-            $mensagens['erro_confirmar'] = "As senhas não coincidem.";
-        }
+    
+    // Validação da confirmação da senha
+    if (empty($_POST['confirmar_senha'])) {
+        $mensagens['confirmar'] = 'Por favor, confirme a senha.';
+    } elseif ($_POST['senha'] !== $_POST['confirmar_senha']) {
+        $mensagens['confirmar'] = 'As senhas não coincidem.';
     }
-
-    return $mensagens;
+    
+    // Armazenando as mensagens na sessão
+    foreach ($mensagens as $key => $msg) {
+        $_SESSION[$key] = $msg;
+    }
+    
+    // Redireciona para a página de resultado, ou onde você deseja mostrar as mensagens
+    header("Location: resultado.php");
+    exit;
 }
 
 ?>

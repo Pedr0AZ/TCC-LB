@@ -9,7 +9,7 @@ $email = $_POST['email'] ?? '';
 $novaSenha = $_POST['nova-senha'] ?? '';
 $confirmarSenha = $_POST['confirmar-senha'] ?? '';
 
-// Valida os dados
+// Valida os dados (função da classe)
 $mensagens = validateInput($nome, $email, $novaSenha, $confirmarSenha);
 
 // Se não houver mensagens de erro, atualiza os dados
@@ -26,6 +26,7 @@ if (empty($mensagens)) {
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':senha', $hashedSenha);
         $stmt->bindParam(':id', $_SESSION['usuario_id']); // Presumindo que o ID do usuário está armazenado na sessão
+        //^ Nota: o id não é modificado... Verificar se posso excluir
 
         if ($stmt->execute()) {
             $_SESSION['mensagem_sucesso'] = "Todos os dados foram alterados com sucesso!";
@@ -53,6 +54,6 @@ if (empty($mensagens)) {
 }
 
 // Redireciona de volta para a página de edição
-header("Location: ../View/edit.php");
+header("Location: ../../View/ConfigConta.php");
 exit();
 ?>
