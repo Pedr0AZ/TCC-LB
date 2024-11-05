@@ -26,22 +26,23 @@ include 'TopMenu.php';
             <h2>Informações da Conta</h2>
             <div class="profile-section">
                 <img class="profile" src="CSS/IMAGEM/PNG/perfil2.png" alt="Perfil Atual">
-                <p class="username">Nome de Usuário: <span style="font-weight: bold">usuario123</span></p>
+                <p class="username">Nome de Usuário: <span style="font-weight: bold"><?php echo $_SESSION['usuario_nome'] ?></span></p>
             </div>
             <div class="info">
                 <label>Email:</label>
-                <p>usuario@email.com</p>
+                <?php echo "<p>" . $_SESSION['usuario_email'] . "</p>"; ?>
             </div>
             <div class="info">
                 <label>Senha:</label>
                 <div class="password-container">
-                    <input type="password" id="senha-display" value="minhasenha" readonly>
+                    <input type="password" id="senha-display" value="<?php echo $_SESSION['usuario_senha'] ?>" readonly>
                     <span onclick="toggleSenha('senha-display', this)" class="eye-icon"></span>
                 </div>
             </div>
             <div class="button-container">
                 <button type="submit" class="blue-btn">Alterar Foto</button>
-                <button type="submit" class="yellow-btn hidden">Salvar Alterações</button>
+                <button type="submit" id="cancel-photo" class="red-btn hidden">Cancelar</button>
+                <button type="submit" id="save-photo" class="yellow-btn hidden" style="font-weight:bold">Salvar Alterações</button>
             </div>
         </div>
 
@@ -52,47 +53,39 @@ include 'TopMenu.php';
             <h2>Configurações</h2>
                 <!-- Sub Painel de opções -->
                 <div class="options">
+
                 </div>
                 <!-- Sub Painel de trocar a senha -->
-                <div class="new-passwd hidden">
-                    <form action="/update-data" method="POST" >
-                        <div class="input-container">
-                            <label for="nome">Nome de Exibição:</label>
-                            <input type="text" id="nome" name="nome" required autocomplete="off">
-                        </div>
-                        <div class="input-container">
-                            <label for="nome">Email:</label>
-                            <input type="text" id="email" name="email" required autocomplete="off">
-                        </div>
-                        <div class="input-container">
-                            <label for="senha">Senha:</label>
-                            <div class="password-container">
-                                <input type="password" id="senha" name="nova-senha" required autocomplete="off">
-                                <span onclick="toggleSenha('senha', this)" class="eye-icon"></span>
-                            </div>
-                        </div>
-                        <div class="input-container">
-                            <label for="nova-senha">Nova Senha:</label>
-                            <div class="password-container">
-                                <input type="password" id="nova-senha" name="nova-senha" required autocomplete="off">
-                                <span onclick="toggleSenha('nova-senha', this)" class="eye-icon"></span>
-                            </div>
-                        </div>
-                        <div class="input-container">
-                            <label for="confirmar-senha">Confirmar Nova Senha:</label>
-                            <div class="password-container">
-                                <input type="password" id="confirmar-senha" name="confirmar-senha" required autocomplete="off">
-                                <span onclick="toggleSenha('confirmar-senha', this)" class="eye-icon"></span>
-                            </div>
-                        </div>
+                <div class="new-passwd">
+                    <form action="../Controller/PHP-Controller/edit.php" method="POST" >
+                    <div class="input-container">
+                        <label for="nome">Nome de Exibição:</label>
+                        <input type="text" id="nome" name="nome" autocomplete="off">
+                        <div class="error-message" id="error-nome"></div>
+                    </div>
+                    <div class="input-container">
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" name="email" autocomplete="off">
+                        <div class="error-message" id="error-email"></div>
+                    </div>
+                    <div class="input-container">
+                        <label for="nova-senha">Nova Senha:</label>
+                        <input type="password" id="nova-senha" name="nova-senha" autocomplete="off">
+                        <div class="error-message" id="error-senha"></div>
+                    </div>
+                    <div class="input-container">
+                        <label for="confirmar-senha">Confirmar Nova Senha:</label>
+                        <input type="password" id="confirmar-senha" name="confirmar-senha" autocomplete="off">
+                        <div class="error-message" id="error-confirmar"></div>
+                    </div>
                         <!-- <div class="input-container">
                             <label for="imagem-perfil">Imagem de Perfil:</label>
                             <input type="file" name="imagem-perfil" id="imagem-perfil" accept="image/*" onchange="previewImagem()">
                             <img id="preview" class="profile-preview" src="" alt="Pré-visualização da Imagem" style="display:none;">
                         </div> -->
                         <div class="button-container">
-                            <button type="submit" class="red-btn">Cancelar</button>
-                            <button type="submit" class="yellow-btn">Salvar Alterações</button>
+                            <button type="submit" id="cancel-data" class="red-btn">Cancelar</button>
+                            <button type="submit" id="save-data" class="yellow-btn">Salvar Alterações</button>
                         </div>
                     </form>
                 </div>
@@ -100,6 +93,6 @@ include 'TopMenu.php';
     </div>
 
     <script src="JS-View/toggleSenha.js"></script>
-    <script src="JS-View/panels.js"></script>
+    <script src="JS-View/Config.js"></script>
 </body>
 </html>

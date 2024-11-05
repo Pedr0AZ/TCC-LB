@@ -34,5 +34,20 @@ include "TopMenu.php";
         </div>
     </div>
 
+                    <!-- Colocar no ConfigConta(talvez): -->
+
+                    <?php
+                    // if (isset($_SESSION['mensagem_edit'])){
+                    //     if ($_SESSION['mensagem_edit'] === "Mudanças feitas com sucesso!" || $_SESSION['mensagem_edit'] === "Nome modificado com sucesso!") {
+                    //         echo '<div style="color: green">' . $_SESSION['mensagem_edit'] . '</div>';
+                    //         echo "<br>";
+                    //         unset($_SESSION['mensagem_edit']);  
+                    //     }else if ($_SESSION['mensagem_edit'] === "Mudanças feitas com sucesso") {
+                    //         echo '<div style="color: red">' . $_SESSION['mensagem_edit'] . '</div>';
+                    //         echo "<br>";
+                    //         unset($_SESSION['mensagem_edit']); 
+                    //     }
+                    //   } ?> 
+
 </body>
 </html>

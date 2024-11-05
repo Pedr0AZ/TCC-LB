@@ -202,6 +202,10 @@ body {
     border-color: #007acc;
 }
 
+.options{
+    width: 100%
+}
+
 /* Pré-visualização da imagem */
 .profile-preview {
     width: 120px;

@@ -64,11 +64,11 @@ session_start();
                     <?php
                       if (isset($_SESSION['mensagem_login'])){
                         if ($_SESSION['mensagem_login'] === "Login realizado com sucesso!" ) {
-                            echo '<div id="message">' . $_SESSION['mensagem_login'] . '</div>';
+                            echo '<div id="message" style="color: green">' . $_SESSION['mensagem_login'] . '</div>';
                             echo "<br>";
                             unset($_SESSION['mensagem_login']);  
                         }else {
-                            echo $_SESSION['mensagem_login'];
+                            echo '<div id="message" style="color: red">' . $_SESSION['mensagem_login'] . '</div>';
                             echo "<br> <br>";
                             unset($_SESSION['mensagem_login']); 
                         }
@@ -90,7 +90,7 @@ session_start();
                     <span class="span">Esqueceu sua senha?</span> 
                 </div>
                 <input type="submit" class="button9-submit" value="Entrar" id="login-submit">
-                <p class="p" id="login-p">Não tem uma conta?<span class="span" id="create-account-link">Criar conta</span></p> 
+                <div class="p" id="login-p"><p>Não tem uma conta?<span class="span" id="create-account-link">Criar conta</span></p></div>
                 <div class="flex-row">
                     <button id="go-to-mda" class="button-mda hidden">Ir para o Menu de Atividades</button>
                 </div>

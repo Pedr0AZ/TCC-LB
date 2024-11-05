@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const overlay = document.getElementById("overlay");
     const loginCard = document.getElementById("loginCard");
     const signupCard = document.getElementById("signupCard");
-    const submitLogin = document.getElementById("login-submit"); 
+    const submitLogin = document.getElementById("login-submit");
+    const loginP = document.getElementById("login-p");
     const submitSignup = document.getElementById("signup-submit"); 
     const goToMda = document.getElementById("go-to-mda");
     const message = document.getElementById("message");
@@ -29,6 +30,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if (message && message.innerText.includes("Login realizado com sucesso!")) { 
+        submitLogin.classList.add("hidden");
+        loginP.classList.add("hidden");
         goToMda.classList.remove("hidden");
     }
 

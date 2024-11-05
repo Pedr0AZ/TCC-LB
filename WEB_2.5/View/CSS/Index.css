@@ -119,7 +119,7 @@ header {
   align-self: center;
   position: absolute;
   right: 10px;
-  top: 7%;
+  top: 5%;
   transform: translateY(50%);
   width: 24px;
   height: 24px;
@@ -173,22 +173,22 @@ border-radius: 20px;
 }
 
 .inputForm {
-border: 1.5px solid #ecedec;
-border-radius: 10px;
-height: 50px;
-display: flex;
-align-items: center;
-padding-left: 10px;
-transition: 0.2s ease-in-out;
-position: relative;
+  border: 1.5px solid #ecedec;
+  border-radius: 10px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  transition: 0.2s ease-in-out;
+  position: relative;
 }
 
 .input {
-margin-left: 10px;
-border-radius: 10px;
-border: none;
-width: 100%;
-height: 100%;
+  margin-left: 10px;
+  border-radius: 10px;
+  border: none;
+  width: 100%;
+  height: 100%;
 }
 
 .input:focus {
