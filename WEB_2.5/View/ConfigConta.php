@@ -53,10 +53,13 @@ include 'TopMenu.php';
             <h2>Configurações</h2>
                 <!-- Sub Painel de opções -->
                 <div class="options">
-
+                    <a>Alterar Informações</a><span>></span>
+                    <a>Sair da Conta</a><span>></span>
+                    <br>
+                    <a>Alterar Informações</a><span>></span>
                 </div>
                 <!-- Sub Painel de trocar a senha -->
-                <div class="new-passwd">
+                <div class="new-passwd hidden">
                     <form action="../Controller/PHP-Controller/edit.php" method="POST" >
                     <div class="input-container">
                         <label for="nome">Nome de Exibição:</label>
