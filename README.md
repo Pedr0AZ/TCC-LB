@@ -13,7 +13,7 @@ O foco do site é ensinar os sinais das letras do alfabeto, os números de 0 a 1
 ## Tecnologias Utilizadas
 
 - **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Node.js 
+- **Backend**: Python
 - **Bibliotecas**: [MediaPipe](https://google.github.io/mediapipe/) (para reconhecimento de gestos), [OpenCV](https://opencv.org/) (para processamento de imagens)
 - **Outras**: Expo (se o site for integrável com apps mobile)
 
