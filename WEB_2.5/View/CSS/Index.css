@@ -485,6 +485,7 @@ border-radius: 10px; /* ou outro valor para ajustar as bordas */
   font-size: 7vh;
   margin-bottom: 10px;
 }
+
 /* BOTAO DENTRO DO BANNER */
 
 .buttonBanner {
@@ -508,78 +509,3 @@ border-radius: 10px; /* ou outro valor para ajustar as bordas */
  .buttonBanner:hover {
   background-color: #0071e2;
  }
-
-
-/* APARTIR DA AQUI ESTARÁ SENDO MAIS VOLTADO AO MENU DE ATIVIDADES */
-
-
-/* Barra de menu vertical */
-.menu-vertical {
-  border-right: 0.5vw solid #33333375;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 20vw;
-  height: 100%;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  padding-top: 7%;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-}
-
-.h1-mv {
-  color: #000000;
-}
-
-.btn-mv {
-  margin-left: 1.2%;
-  max-width: 19vw;
-  min-width: 19vw;
-  min-height: 8vh;
-  margin-bottom: 2vh;
-  --button_radius: 0.75em;
-  --button_color: #ffffff;
-  --button_outline_color: #000000;
-  font-size: 1.3vw;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  border-radius: var(--button_radius);
-  background: var(--button_outline_color);
-}
-
-.btn-mv_top {
-  display: block;
-  box-sizing: border-box;
-  border: 2px solid var(--button_outline_color);
-  border-radius: var(--button_radius);
-  padding: 0.75em 1.5em;
-  background: var(--button_color);
-  color: var(--button_outline_color);
-  transform: translateY(-0.2em);
-  transition: transform 0.1s ease;
-}
-
-.btn-mv:hover .btn-mv_top {
-  transform: translateY(-0.33em);
-}
-
-.btn-mv:active .btn-mv_top {
-  transform: translateY(0);
-}
-
-.btn_bottom {
-  margin-top: 60vh;
-}
-
-/* DAQUI PRA BAIXO É MAIS FOCADO AO TREINAMENTO DE LETRAS */
-
-#camera {
-  margin-top: 10vh;
-  margin-left: 5vw;
-  width: 100%;
-  max-width: 700px;
-  height: 500px;
-  background-color: #333;
-}

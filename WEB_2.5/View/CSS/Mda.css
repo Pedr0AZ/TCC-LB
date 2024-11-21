@@ -1,0 +1,148 @@
+/* Barra lateral */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    height: 100%;
+    background: linear-gradient(135deg, #1d3557, #457b9d);
+    color: #f1faee;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.sidebar.collapsed {
+    width: 80px;
+}
+
+.sidebar-header {
+    margin-top: 4.7vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    /* Indicativo de que pode ser clicado */
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-header:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Efeito de hover */
+}
+
+.sidebar-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    /* Tamanho maior para o ícone */
+    cursor: pointer;
+}
+
+.sidebar-header button:hover {
+    background: none;
+}
+
+.sidebar-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    /* Aumenta o tamanho do ícone */
+    cursor: pointer;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.sidebar-menu>li {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin: 10px;
+    transition: background 0.3s ease, transform 0.1s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-menu>li:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.sidebar-menu>li:active {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.sidebar-menu .expand-btn {
+    background: none;
+    border: none;
+    color: #f1faee;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+}
+
+.submenu {
+    list-style: none;
+    padding-left: 20px;
+    margin-top: 10px;
+    display: none;
+    transition: opacity 0.3s ease, height 0.3s ease;
+}
+
+.submenu.visible {
+    display: block;
+}
+
+.sidebar-menu .submenu>li {
+    padding: 10px;
+    border-radius: 6px;
+    margin: 5px 0;
+    transition: background 0.3s ease, transform 0.1s ease;
+    cursor: pointer;
+}
+
+.sidebar-menu .submenu>li:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(10px);
+}
+
+li>i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.sidebar.collapsed li>i {
+    margin: 0 auto;
+}
+
+.sidebar.collapsed li>span {
+    display: none;
+}
+
+.sidebar.collapsed ul {
+    opacity: 0;
+    height: 0;
+}
+
+#menu-text {
+    display: inline-block;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar.collapsed #menu-text {
+    opacity: 0;
+    visibility: hidden;
+}
