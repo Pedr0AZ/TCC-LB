@@ -20,3 +20,10 @@ O foco do site é ensinar os sinais das letras do alfabeto, os números de 0 a 1
 ## Como Rodar o Projeto
 
 perae que amnh eu te conto?????
+
+## Contribuidores
+
+- Pedro Henrique
+- Isabelle Isa
+- Victhor Coppola
+- Guilherme Kenji
