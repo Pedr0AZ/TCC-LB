@@ -27,3 +27,4 @@ perae que amnh eu te conto?????
 - Isabelle Isa
 - Victhor Coppola
 - Guilherme Kenji
+- Júlio César Orlandi
