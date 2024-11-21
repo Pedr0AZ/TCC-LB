@@ -1,4 +1,4 @@
-# TCC-LB
+# *TCC-LB*
 # TCC - Site de Aprendizado de Libras
 
 Este repositório contém o desenvolvimento de um site interativo para aprendizado da Língua Brasileira de Sinais (Libras).
