@@ -1,5 +1,6 @@
 <?php
 include (__DIR__ . '/../Model/conexao.php');  //se der erro, tire o __DIR__
+session_start();
 include 'TopMenu.php';
 ?>
 
@@ -51,13 +52,14 @@ include 'TopMenu.php';
         <!-- Painel Direito: Alterar Configurações -->
         <div class="right-panel">
             <h2>Configurações</h2>
+
                 <!-- Sub Painel de opções -->
                 <div class="options">
-                    <a>Alterar Informações</a><span>></span>
-                    <a>Sair da Conta</a><span>></span>
-                    <br>
-                    <a>Alterar Informações</a><span>></span>
-                </div>
+                    <a id="alterar-link" class="options-link"><p>Alterar Informações</p> <span>></span></a>
+                    <a id="sair-link" href="../Controller/PHP-Controller/logout.php" class="options-link"><p>Sair da Conta</p> <span>></span></a>
+                    <a id="deletar-link" class="options-link"><p>Apagar Conta</p> <span>></span></a>
+                    </div>
+
                 <!-- Sub Painel de trocar a senha -->
                 <div class="new-passwd hidden">
                     <form action="../Controller/PHP-Controller/edit.php" method="POST" >
@@ -73,12 +75,18 @@ include 'TopMenu.php';
                     </div>
                     <div class="input-container">
                         <label for="nova-senha">Nova Senha:</label>
-                        <input type="password" id="nova-senha" name="nova-senha" autocomplete="off">
+                        <div class="input-container-senha">
+                            <input type="password" id="nova-senha" name="nova-senha" autocomplete="off">
+                            <span onclick="toggleSenha('nova-senha', this)" class="eye-icon"></span>
+                        </div> 
                         <div class="error-message" id="error-senha"></div>
                     </div>
                     <div class="input-container">
                         <label for="confirmar-senha">Confirmar Nova Senha:</label>
-                        <input type="password" id="confirmar-senha" name="confirmar-senha" autocomplete="off">
+                        <div class="input-container-senha">
+                            <input type="password" id="confirmar-senha" name="confirmar-senha" autocomplete="off">
+                            <span onclick="toggleSenha('confirmar-senha', this)" class="eye-icon"></span>
+                        </div> 
                         <div class="error-message" id="error-confirmar"></div>
                     </div>
                         <!-- <div class="input-container">
@@ -90,12 +98,41 @@ include 'TopMenu.php';
                             <button type="submit" id="cancel-data" class="red-btn">Cancelar</button>
                             <button type="submit" id="save-data" class="yellow-btn">Salvar Alterações</button>
                         </div>
+
                     </form>
                 </div>
+
+
+                <div id="config-overlay" class="hidden">
+
+                    <div id="deletar" class="card">  <!-- Card de Excluir conta ;_; -->
+                        <h2>Excluir Conta</h2>
+                        <?php
+                            if (isset($_SESSION['mensagem_delete'])) {
+                                if (isset($_GET['status']) && $_GET['status'] === 'success') {
+                                    echo '<p style="font-weight: bold; color: green;">' . $_SESSION['mensagem_delete'] . '</p>';
+                                    echo '<p style="margin-top: 8px;">Você será redirecionado para a página inicial em breve...</p><br>';
+                                    echo '<meta http-equiv="refresh" content="4;url=Index.php">'; 
+                                    session_destroy();
+                                } else if (isset($_GET['status']) && $_GET['status'] === 'error') {
+                                    echo '<p style="font-weight: bold; color:red;">' . $_SESSION['mensagem_delete'] . '</p>' . '<br>';
+                                } else if (isset($_GET['status']) && $_GET['status'] === 'invalid') {
+                                    echo '<p style="font-weight: bold; color:orange;">' . $_SESSION['mensagem_delete'] . '</p>' . '<br>';
+                                }
+                            }
+                        ?>
+                        <p>Tem certeza de que deseja excluir sua conta?<br>Essa ação é <spam style="font-weight: bold">irreversível</spam>.</p>
+                            <form action="../Controller/PHP-Controller/delete.php" method="POST" class="form">
+                                <button type="submit" class="btn btn-danger" id="delete-btn">Excluir</button>
+                                <button type="button" class="btn btn-cancel" id="cancel-btn">Cancelar</button>
+                            </form>
+                    </div>
+                </div>        
         </div>
     </div>
 
     <script src="JS-View/toggleSenha.js"></script>
     <script src="JS-View/Config.js"></script>
+    <script src="JS-View/ConfigCard.js"></script>
 </body>
 </html>

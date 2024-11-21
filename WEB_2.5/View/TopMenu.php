@@ -64,11 +64,11 @@ session_start();
                     <?php
                       if (isset($_SESSION['mensagem_login'])){
                         if ($_SESSION['mensagem_login'] === "Login realizado com sucesso!" ) {
-                            echo '<div id="message" style="color: green">' . $_SESSION['mensagem_login'] . '</div>';
+                            echo '<div id="message" style="color: green;">' . $_SESSION['mensagem_login'] . '</div>';
                             echo "<br>";
                             unset($_SESSION['mensagem_login']);  
                         }else {
-                            echo '<div id="message" style="color: red">' . $_SESSION['mensagem_login'] . '</div>';
+                            echo '<div id="message" style="color: red;">' . $_SESSION['mensagem_login'] . '</div>';
                             echo "<br> <br>";
                             unset($_SESSION['mensagem_login']); 
                         }

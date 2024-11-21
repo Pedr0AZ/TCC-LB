@@ -7,7 +7,7 @@
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 body {
@@ -48,7 +48,7 @@ body {
 
 .container {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     width: 100%;
     max-width: 900px;
     background-color: #ffffff;
@@ -71,11 +71,12 @@ body {
     overflow-y: auto;
 }
 
+/* Painel esquerdo */
 .left-panel {
     display: flex;
     flex-direction: column;
     background-color: #fffede;
-    padding: 9.2% 8%;
+    padding: 9.2% 5%;
     border-radius: 8px 0 0 8px;
     align-self: center;
 }
@@ -155,7 +156,7 @@ body {
     background-size: cover;
     cursor: pointer;
     transition: background-image 0.3s ease;
-    z-index: 1;
+    z-index: 3;
 }
 
 .eye-icon.active {
@@ -164,7 +165,9 @@ body {
 
 /* Painel direito */
 .right-panel {
-    margin: 40px 40px 30px 50px;
+    padding: 40px 0 40px 40px;
+    display: flex;
+    flex-direction: column;
 }
 
 .right-panel h2 {
@@ -173,10 +176,30 @@ body {
     margin-bottom: 25px;
 }
 
+.input-container-senha {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.input-container-senha input[type="password"]{
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 0.9em;
+    border: 2px solid #cfe0f1;
+    border-radius: 8px;
+    background-color: #f7fbff;
+    outline: none;
+    transition: border-color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
 .input-container {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .input-container label {
@@ -186,7 +209,6 @@ body {
 }
 
 .input-container input[type="text"],
-.input-container input[type="password"],
 .input-container input[type="file"] {
     width: 100%;
     padding: 8px 10px;
@@ -196,14 +218,12 @@ body {
     background-color: #f7fbff;
     outline: none;
     transition: border-color 0.3s ease;
+    display: flex;
+    align-items: center;
 }
 
 .input-container input:focus {
     border-color: #007acc;
-}
-
-.options{
-    width: 100%
 }
 
 /* Pré-visualização da imagem */
@@ -224,7 +244,7 @@ body {
     gap: 45px;
 }
 
-.button-container button{
+.button-container button {
     padding: 12px 20px;
     font-size: 1em;
     border: none;
@@ -233,11 +253,11 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.yellow-btn{
+.yellow-btn {
     background-color: #fff82f;
     color: black;
 }
-.yellow-btn:hover{
+.yellow-btn:hover {
     background-color: #dbca31;
 }
 
@@ -258,6 +278,108 @@ body {
 }
 
 /* Painel de Opções */
-.options{
-    
+.options {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 -20px;
 }
+
+.options-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    padding: 20px 25px;
+    border-radius: 7px;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.options-link:hover {
+    background-color: #dddbd5;
+}
+
+.options-link p {
+    width: 100%;
+    font-size: 1.4rem;
+}
+
+.options-link span {
+    font-size: 1.4rem;
+    transition: transform 0.5s;
+}
+.options-link:hover span {
+    transform: translateX(7px);
+}
+
+#deletar-link p{
+    color: #ff1e00;
+}
+
+.new-passwd{
+    margin-right: 40px;
+}
+
+
+#config-overlay {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card de excluir conta*/
+.card {
+    background: #fff;
+    padding: 40px 30px 50px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+}
+
+.form{
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 30px 0 0px;
+    padding: 0;
+    justify-content: space-between;
+    gap: 10%;
+}
+
+.btn {
+    padding: 13px;
+    width: 50%;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    align-items: center;
+}
+
+.btn-danger {
+    background: #e63946;
+    color: #fff;
+}
+.btn-danger:hover {
+    background: #ca2633;
+}
+
+.btn-cancel {
+    background: #ccc;
+    color: #333;
+    font-weight: bold;
+}
+.btn-cancel:hover {
+    background: #868686;
+}
+
