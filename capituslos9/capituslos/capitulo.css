@@ -1,0 +1,111 @@
+.container {
+    max-width: 1200px;
+  }
+  
+  .shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  
+  .bg-gray-100 {
+    background-color: #f7fafc;
+  }
+  
+  .bg-white {
+    background-color: #ffffff;
+  }
+  
+  .text-gray-500 {
+    color: #a0aec0;
+  }
+  
+  .text-yellow-500 {
+    color: #ecc94b;
+  }
+  
+  .text-blue-500 {
+    color: #4299e1;
+  }
+  
+  .text-blue-900 {
+    color: #2a4365;
+  }
+  
+  .text-red-500 {
+    color: #f56565;
+  }
+  
+  .font-semibold {
+    font-weight: 600;
+  }
+  
+  .rounded-full {
+    border-radius: 9999px;
+  }
+  
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .py-1 {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+  
+  .mt-2 {
+    margin-top: 0.5rem;
+  }
+  
+  .mb-2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .mb-4 {
+    margin-bottom: 1rem;
+  }
+  
+  .p-4 {
+    padding: 1rem;
+  }
+  
+  .p-8 {
+    padding: 2rem;
+  }
+  
+  .pl-8 {
+    padding-left: 2rem;
+  }
+  
+  .grid {
+    display: grid;
+  }
+  
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .gap-4 {
+    gap: 1rem;
+  }
+  
+  .w-1/4 {
+    width: 25%;
+  }
+  
+  .w-3/4 {
+    width: 75%;
+  }
+  
+  .w-full {
+    width: 100%;
+  }
+  
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  

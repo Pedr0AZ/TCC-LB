@@ -1,0 +1,7 @@
+Flask
+opencv-python
+mediapipe
+numpy
+
+# isso aqui é para quando for testar na sala de aula, isso aqui deixa tudo para instalar de uma vez só
+# dê " pip install -r requirements.txt " para baixar tudo que precisa
