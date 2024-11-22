@@ -1,6 +1,6 @@
 /* Barra lateral */
 .sidebar {
-    position: fixed;
+    position: fixed; /* Mantém a barra fixa na lateral */
     left: 0;
     top: 0;
     width: 280px;
@@ -12,6 +12,7 @@
     overflow: hidden;
     transition: width 0.3s ease-in-out;
 }
+
 
 /* Alinhar o texto ao lado do ícone hambúrguer */
 #toggle-sidebar {

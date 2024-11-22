@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="CSS/Parte2Mda.css">
     <link rel="website icon" type="icon" href="CSS/IMAGEM/Favicon/favicon.ico">
 </head>
-
 <body>
 <div class="sidebar collapsed">
     <div class="sidebar-header">
@@ -41,22 +40,21 @@
     </ul>
 </div>
 
-
-    <div class="content">
-        <!-- Seção 1: Início -->
-        <div class="section" id="inicio">
-            <h1>Bem-vindo ao SinaLibras!</h1>
-            <img src="IMAGEM/exemplo1.jpg" alt="Imagem do início" class="section-img">
-            <p>
-                Explore um mundo de aprendizado com a tecnologia de Libras. Navegue pelas atividades e recursos
-                exclusivos para melhorar suas habilidades.
-            </p>
-            <a href="#atividades" class="btn-sessão">Descubra as atividades →</a>
-        </div>
-
+<div class="section">
+    <div class="section-content">
+        <h1>Bem-vindo ao SinaLibras!</h1>
+        <p>
+            Vamos Iniciar o aprendizado?
+        </p>
+        <p>Com um aprendizado simples, rápido e prático! você pode aprender o fundamental de Libras em pouco tempo, começe agora!</p>
+        <a href="#atividades" class="btn-sessão">Descubra as atividades →</a>
+    </div>
+    <div class="section-img">
+        <img src="Libras Imagem1.png" alt="Imagem representativa">
+    </div>
+</div>
         <script src="JS-View/BarradeMenu.js"></script>
 
 </body>
 <?php include "TopMenu.php"; ?>
-
 </html>
