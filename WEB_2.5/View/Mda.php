@@ -8,6 +8,7 @@
     <title>SinaLibras</title>
     <link rel="stylesheet" type="text/css" href="CSS/Index.css">
     <link rel="stylesheet" type="text/css" href="CSS/Mda.css">
+    <link rel="stylesheet" type="text/css" href="CSS/Parte2Mda.css">
     <link rel="website icon" type="icon" href="CSS/IMAGEM/Favicon/favicon.ico">
 </head>
 
@@ -15,30 +16,48 @@
     <div class="sidebar collapsed">
         <div class="sidebar-header">
             <button id="toggle-sidebar">☰</button>
-            <h2 id="menu-text">Menu</h2>
+            <h2 id="menu-text"></h2>
         </div>
         <ul class="sidebar-menu">
             <li>
-                <i class="fas fa-home"></i>
-                <span>Home</span>
-                <i class="fas fa-chevron-down"></i>
-            </li>
-            <li>
                 <button class="expand-btn">
                     <i class="fas fa-folder"></i>
-                    <span>Projetos</span>
+                    <span>Topo</span>
                     <i class="fas fa-chevron-down"></i>
                 </button>
             </li>
             <li>
-                <i class="fas fa-cog"></i>
-                <span>Configurações</span>
-                <i class="fas fa-chevron-down"></i>
+                <button class="expand-btn">
+                    <i class="fas fa-folder"></i>
+                    <span>Atividades</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </li>
+            <li>
+                <button class="expand-btn">
+                    <i class="fas fa-folder"></i>
+                    <span>aprendizado</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
             </li>
         </ul>
     </div>
-    <script src="JS-View/BarradeMenu.js"></script>
-    
+
+    <div class="content">
+        <!-- Seção 1: Início -->
+        <div class="section" id="inicio">
+            <h1>Bem-vindo ao SinaLibras!</h1>
+            <img src="IMAGEM/exemplo1.jpg" alt="Imagem do início" class="section-img">
+            <p>
+                Explore um mundo de aprendizado com a tecnologia de Libras. Navegue pelas atividades e recursos
+                exclusivos para melhorar suas habilidades.
+            </p>
+            <a href="#atividades" class="btn-primary">Descubra as atividades →</a>
+        </div>
+
+        <script src="JS-View/BarradeMenu.js"></script>
+
 </body>
+<?php include "TopMenu.php"; ?>
 
 </html>
