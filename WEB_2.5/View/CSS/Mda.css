@@ -10,7 +10,17 @@
     border-right: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 2px 0 15px rgba(0, 0, 0, 0.5);
     overflow: hidden;
-    transition: width 0.3s ease, opacity 0.3s ease;
+    transition: width 0.3s ease-in-out;
+}
+
+/* Alinhar o texto ao lado do ícone hambúrguer */
+#toggle-sidebar {
+    font-size: 1.5rem;
+    display: inline-block;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
 }
 
 .sidebar.collapsed {

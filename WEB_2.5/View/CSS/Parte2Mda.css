@@ -80,7 +80,7 @@
 }
 
 /* Botões */
-.main-content .btn-primary {
+.main-content .btn-sessão {
     display: inline-block;
     margin-top: 20px;
     padding: 12px 20px;
@@ -92,7 +92,7 @@
     transition: background-color 0.3s, transform 0.2s ease;
 }
 
-.main-content .btn-primary:hover {
+.main-content .btn-sessão:hover {
     background-color: #1d4ed8;
     transform: translateY(-2px); /* Efeito de elevação ao passar o mouse */
 }

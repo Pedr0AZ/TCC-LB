@@ -1,26 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const sidebar = document.querySelector(".sidebar");
-  const toggleButton = document.getElementById("toggle-sidebar");
+  const sidebar = document.querySelector(".sidebar"); // Seleciona a barra lateral
+  const toggleButton = document.getElementById("toggle-sidebar"); // Botão hambúrguer
+  const sidebarHeader = document.querySelector(".sidebar-header"); // Header da barra lateral
 
-  // Inicia com a barra lateral escondida
-  sidebar.classList.add("collapsed");
+  // Função para alternar o estado da barra lateral
+  const toggleSidebar = () => {
+    sidebar.classList.toggle("collapsed"); // Adiciona ou remove a classe 'collapsed'
+  };
 
-  // Alternar a visibilidade da barra lateral ao clicar no botão
-  toggleButton.addEventListener("click", () => {
-      sidebar.classList.toggle("collapsed");
-  });
+  // Adiciona evento de clique no botão hambúrguer
+  toggleButton.addEventListener("click", toggleSidebar);
+
+  // Adiciona evento de clique no header
+  sidebarHeader.addEventListener("click", toggleSidebar);
 });
-
-
-
-
-// Tornar o .sidebar-header funcional quando a barra estiver escondida
-sidebarHeader.addEventListener("click", () => {
-  if (sidebar.classList.contains("collapsed")) {
-    sidebar.classList.remove("collapsed");
-  }
-});
-;
 
 // Adiciona funcionalidade de mostrar/ocultar submenus
 expandBtns.forEach(button => {
