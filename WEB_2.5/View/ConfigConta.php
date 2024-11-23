@@ -13,6 +13,7 @@ include 'TopMenu.php';
     <title>Configurações da Conta</title>
     <link rel="stylesheet" href="CSS/ConfigConta.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
 </head>
 <body>
 
@@ -49,64 +50,91 @@ include 'TopMenu.php';
 
         <div class="vertical-line"></div>
 
-        <!-- Painel Direito: Alterar Configurações -->
         <div class="right-panel">
             <h2>Configurações</h2>
 
-                <!-- Sub Painel de opções -->
-                <div class="options">
-                    <a id="alterar-link" class="options-link"><p>Alterar Informações</p> <span>></span></a>
-                    <a id="sair-link" href="../Controller/PHP-Controller/logout.php" class="options-link"><p>Sair da Conta</p> <span>></span></a>
-                    <a id="deletar-link" class="options-link"><p>Apagar Conta</p> <span>></span></a>
-                    </div>
+            <!-- Sub Painel de opções -->
+            <div id="options" class="options">
+                <a id="alterar-link" class="options-link"><p>Alterar Informações</p> <span>></span></a>
+                <a id="sair-link" href="../Controller/PHP-Controller/logout.php" class="options-link"><p>Sair da Conta</p> <span>></span></a>
+                <a id="deletar-link" class="options-link"><p>Apagar Conta</p> <span>></span></a>
+            </div>
 
-                <!-- Sub Painel de trocar a senha -->
-                <div class="new-passwd hidden">
-                    <form action="../Controller/PHP-Controller/edit.php" method="POST" >
+            <!-- Sub Painel de trocar a senha -->
+            <div id="new-passwd" class="new-passwd hidden">
+                <?php
+                include_once '../Controller/PHP-Controller/edit.php';
+                if (isset($_SESSION['mensagem_edit'])){
+                    if ($_SESSION['mensagem_edit'] === "Dados alterados com sucesso." ){
+                        echo '<p style="font-weight: bold; color: green;" id="edit-sucesso">' . $_SESSION['mensagem_edit'] . '</p>' .'<br>';
+                        unset($_SESSION['mensagem_edit']);
+                    } else{
+                        echo '<p style="font-weight: bold; color: red;">' . $_SESSION['mensagem_edit'] . '</p>' .'<br>';
+                        unset($_SESSION['mensagem_edit']);
+                    }
+                }
+                ?>
+                <form action="../Controller/PHP-Controller/edit.php" method="POST">
                     <div class="input-container">
                         <label for="nome">Nome de Exibição:</label>
-                        <input type="text" id="nome" name="nome" autocomplete="off">
+                        <?php
+                        echo '<p style="font-weight: bold; color: red;">' . $_SESSION['mensagem_nome'] . '</p>';
+                        unset($_SESSION['mensagem_nome']);
+                        ?>
+                        <input type="text" id="nome" name="nome" value="<?php echo $_SESSION['novo_nome']; ?>" autocomplete="off">
                         <div class="error-message" id="error-nome"></div>
                     </div>
                     <div class="input-container">
                         <label for="email">Email:</label>
-                        <input type="text" id="email" name="email" autocomplete="off">
+                        <?php
+                        echo '<p style="font-weight: bold; color: red;">' . $_SESSION['mensagem_email'] . '</p>';
+                        unset($_SESSION['mensagem_email']);
+                        ?>
+                        <input type="text" id="email" name="email" value="<?php echo $_SESSION['novo_email']; ?>" autocomplete="off">
                         <div class="error-message" id="error-email"></div>
                     </div>
                     <div class="input-container">
                         <label for="nova-senha">Nova Senha:</label>
+                        <?php
+                        echo '<p style="font-weight: bold; color: red;">' . $_SESSION['mensagem_senha'] . '</p>';
+                        unset($_SESSION['mensagem_senha']);
+                        ?>
                         <div class="input-container-senha">
-                            <input type="password" id="nova-senha" name="nova-senha" autocomplete="off">
+                            <input type="password" id="nova-senha" name="nova-senha" value="<?php echo $_SESSION['novo_senha']; ?>" autocomplete="off">
                             <span onclick="toggleSenha('nova-senha', this)" class="eye-icon"></span>
                         </div> 
                         <div class="error-message" id="error-senha"></div>
                     </div>
                     <div class="input-container">
                         <label for="confirmar-senha">Confirmar Nova Senha:</label>
+                        <?php
+                        echo '<p style="font-weight: bold; color: red;">' . $_SESSION['mensagem_confirmar'] . '</p>';
+                        unset($_SESSION['mensagem_confirmar']);
+                        ?>
                         <div class="input-container-senha">
-                            <input type="password" id="confirmar-senha" name="confirmar-senha" autocomplete="off">
+                            <input type="password" id="confirmar-senha" name="confirmar-senha" value="<?php echo $_SESSION['novo_confirmar']; ?>" autocomplete="off">
                             <span onclick="toggleSenha('confirmar-senha', this)" class="eye-icon"></span>
                         </div> 
                         <div class="error-message" id="error-confirmar"></div>
                     </div>
-                        <!-- <div class="input-container">
-                            <label for="imagem-perfil">Imagem de Perfil:</label>
-                            <input type="file" name="imagem-perfil" id="imagem-perfil" accept="image/*" onchange="previewImagem()">
-                            <img id="preview" class="profile-preview" src="" alt="Pré-visualização da Imagem" style="display:none;">
-                        </div> -->
-                        <div class="button-container">
-                            <button type="submit" id="cancel-data" class="red-btn">Cancelar</button>
-                            <button type="submit" id="save-data" class="yellow-btn">Salvar Alterações</button>
-                        </div>
-
-                    </form>
-                </div>
-
+                    <!-- <div class="input-container">
+                        <label for="imagem-perfil">Imagem de Perfil:</label>
+                        <input type="file" name="imagem-perfil" id="imagem-perfil" accept="image/*" onchange="previewImagem()">
+                        <img id="preview" class="profile-preview" src="" alt="Pré-visualização da Imagem" style="display:none;">
+                    </div> -->
+                    <div class="button-container">
+                        <button type="button" id="cancel-data" class="red-btn">Cancelar</button>
+                        <button type="submit" id="save-data" class="yellow-btn">Salvar Alterações</button>
+                        <button type="submit" name="voltarPressed" value="true" id="voltar" class="blue-btn hidden">Voltar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
                 <div id="config-overlay" class="hidden">
 
                     <div id="deletar" class="card">  <!-- Card de Excluir conta ;_; -->
-                        <h2>Excluir Conta</h2>
+                        <h2>Excluir Conta</h2><br>
                         <?php
                             if (isset($_SESSION['mensagem_delete'])) {
                                 if (isset($_GET['status']) && $_GET['status'] === 'success') {
@@ -121,10 +149,10 @@ include 'TopMenu.php';
                                 }
                             }
                         ?>
-                        <p>Tem certeza de que deseja excluir sua conta?<br>Essa ação é <spam style="font-weight: bold">irreversível</spam>.</p>
+                        <p>Tem certeza de que deseja excluir sua conta?<br>Essa ação é <spam style="font-weight: bold; color:red;">irreversível</spam>.</p>
                             <form action="../Controller/PHP-Controller/delete.php" method="POST" class="form">
-                                <button type="submit" class="btn btn-danger" id="delete-btn">Excluir</button>
                                 <button type="button" class="btn btn-cancel" id="cancel-btn">Cancelar</button>
+                                <button type="submit" class="btn btn-danger" id="delete-btn">Excluir</button>
                             </form>
                     </div>
                 </div>        

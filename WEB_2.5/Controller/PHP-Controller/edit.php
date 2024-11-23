@@ -1,59 +1,97 @@
 <?php
+include_once __DIR__ . '/../../Model/conexao.php';
+include_once __DIR__ . '/../../Model/funcoes.php';
 session_start();
-include '../../Model/conexao.php'; // Inclua a conexão com o banco de dados
-include '../../Model/funcoes.php'; // Inclua o arquivo com as funções
 
-// Captura os dados do formulário
-$nome = $_POST['nome'] ?? '';
-$email = $_POST['email'] ?? '';
-$novaSenha = $_POST['nova-senha'] ?? '';
-$confirmarSenha = $_POST['confirmar-senha'] ?? '';
-
-// Valida os dados (função da classe)
-$mensagens = validateInput($nome, $email, $novaSenha, $confirmarSenha);
-
-// Se não houver mensagens de erro, atualiza os dados
-if (empty($mensagens)) {
-    // Atualiza o nome e email na sessão
-    $_SESSION['usuario_nome'] = $nome;
-    $_SESSION['usuario_email'] = $email;
-
-    // Se a nova senha foi preenchida, atualiza também no banco de dados
-    if (!empty($novaSenha)) {
-        $hashedSenha = password_hash($novaSenha, PASSWORD_DEFAULT);
-        $stmt = $conn->prepare("UPDATE usuarios SET nome = :nome, email = :email, senha = :senha WHERE id = :id");
-        $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':senha', $hashedSenha);
-        $stmt->bindParam(':id', $_SESSION['usuario_id']); // Presumindo que o ID do usuário está armazenado na sessão
-        //^ Nota: o id não é modificado... Verificar se posso excluir
-
-        if ($stmt->execute()) {
-            $_SESSION['mensagem_sucesso'] = "Todos os dados foram alterados com sucesso!";
-        } else {
-            $_SESSION['mensagem_erro'] = "Houve um problema ao atualizar os dados.";
-        }
-    } else {
-        // Apenas atualiza nome e email
-        $stmt = $conn->prepare("UPDATE usuarios SET nome = :nome, email = :email WHERE id = :id");
-        $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':id', $_SESSION['usuario_id']); // Presumindo que o ID do usuário está armazenado na sessão
-
-        if ($stmt->execute()) {
-            $_SESSION['mensagem_sucesso'] = "Todos os dados foram alterados com sucesso!";
-        } else {
-            $_SESSION['mensagem_erro'] = "Houve um problema ao atualizar os dados.";
-        }
-    }
-} else {
-    // Se houver mensagens de erro, armazena na sessão
-    foreach ($mensagens as $key => $msg) {
-        $_SESSION[$key] = $msg;
-    }
+// Inicializar as variáveis de sessão para os novos dados, caso não existam
+if (!isset($_SESSION['novo_nome'])) {
+    $_SESSION['novo_nome'] = $_SESSION['usuario_nome'];
+}
+if (!isset($_SESSION['novo_email'])) {
+    $_SESSION['novo_email'] = $_SESSION['usuario_email'];
+}
+if (!isset($_SESSION['novo_senha'])) {
+    $_SESSION['novo_senha'] = '';
+}
+if (!isset($_SESSION['novo_confirmar'])) {
+    $_SESSION['novo_confirmar'] = '';
 }
 
-// Redireciona de volta para a página de edição
-header("Location: ../../View/ConfigConta.php");
-exit();
+$voltarPressed = false;
+
+if (isset($_POST['voltarPressed']) && $_POST['voltarPressed'] === 'true') {
+    $voltarPressed = true;
+    // Limpar as mensagens de erro da sessão
+    unset($_SESSION['mensagem_edit']);
+    unset($_SESSION['mensagem_nome']);
+    unset($_SESSION['mensagem_email']);
+    unset($_SESSION['mensagem_senha']);
+    unset($_SESSION['mensagem_confirmar']);
+
+    header('Location: ../../View/ConfigConta.php');
+    exit;
+
+} else {
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Se valores forem enviados via POST, eles sobrescrevem os valores iniciais, mesmo que estejam vazios
+        $nome = isset($_POST['nome']) ? $_POST['nome'] : $_SESSION['novo_nome'];
+        $email = isset($_POST['email']) ? $_POST['email'] : $_SESSION['novo_email'];
+        $novaSenha = $_POST['nova-senha'] ?? '';
+        $confirmarSenha = $_POST['confirmar-senha'] ?? '';
+
+        // Atualiza os valores da sessão para exibição no formulário
+        $_SESSION['novo_nome'] = $nome;
+        $_SESSION['novo_email'] = $email;
+        $_SESSION['novo_senha'] = $novaSenha;
+        $_SESSION['novo_confirmar'] = $confirmarSenha;
+
+        // Chama a validação do funcoes.php
+        validarInput($nome, $email, $novaSenha, $confirmarSenha);
+
+        // Verifica se existem mensagens de erro antes de prosseguir
+        if (
+            isset($_SESSION['mensagem_nome']) ||
+            isset($_SESSION['mensagem_email']) ||
+            isset($_SESSION['mensagem_senha']) ||
+            isset($_SESSION['mensagem_confirmar'])
+        ) {
+            header('Location: ../../View/ConfigConta.php'); // Redireciona para a exibição de mensagens
+            exit;
+        } else {
+            try {
+                // Atualiza apenas os campos alterados
+                $sql = "UPDATE usuarios SET 
+                            nome = IF(:nome != '', :nome, nome), 
+                            email = IF(:email != '', :email, email),
+                            senha = IF(:novaSenha != '', :novaSenha, senha)
+                        WHERE id = :id";
+
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindValue(':nome', $nome ?: $_SESSION['usuario_nome']);
+                $stmt->bindValue(':email', $email ?: $_SESSION['usuario_email']);
+                $stmt->bindValue(':novaSenha', $novaSenha ? password_hash($novaSenha, PASSWORD_DEFAULT) : '');
+                $stmt->bindValue(':id', $_SESSION['usuario_id']);
+
+                $stmt->execute();
+
+                if ($stmt->rowCount() > 0) {
+                    $_SESSION['usuario_nome'] = $nome ?: $_SESSION['usuario_nome'];
+                    $_SESSION['usuario_email'] = $email ?: $_SESSION['usuario_email'];
+                    $_SESSION['usuario_senha'] = $novaSenha ?: $_SESSION['usuario_senha'];
+                    $_SESSION['novo_senha'] = '';
+                    $_SESSION['novo_confirmar'] = '';
+                    $_SESSION['mensagem_edit'] = "Dados alterados com sucesso.";
+                } else {
+                    $_SESSION['mensagem_edit'] = "Nenhuma alteração foi feita.";
+                }
+            } catch (PDOException $e) {
+                $_SESSION['mensagem_edit'] = "Erro ao atualizar os dados: " . $e->getMessage();
+            }
+
+            header('Location: ../../View/ConfigConta.php');
+            exit;
+        }
+    }
+}
 ?>

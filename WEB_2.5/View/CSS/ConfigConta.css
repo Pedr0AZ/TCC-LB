@@ -76,7 +76,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #fffede;
-    padding: 9.2% 5%;
+    padding: 5% 5% 6%;
     border-radius: 8px 0 0 8px;
     align-self: center;
 }
@@ -96,14 +96,13 @@ body {
 }
 
 .profile-section img.profile {
-    width: 120px;
-    height: 120px;
+    width: 230px;
+    height: 230px;
     border-radius: 50%;
     object-fit: cover;
 }
 
 .profile-section p.username {
-    margin-top: 10px;
     color: #5D3A1D;
     font-size: 1.1em;
 }
@@ -234,7 +233,7 @@ body {
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid #007acc;
-    display: none;
+    display: block;
 }
 
 .button-container {
@@ -320,8 +319,37 @@ body {
 
 .new-passwd{
     margin-right: 40px;
+    flex: 0 0 50%;
+    opacity: 0;
+    transform: translateX(-100%); 
+    animation: slideIn 0.5s ease-out forwards; 
+    will-change: transform, opacity; 
+}
+.new-passwd.slide-out {
+    animation: slideOut 0.3s ease-in forwards; /* Duração de 0.3s para slideOut mais rápido */
 }
 
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-4%); /* Começa fora da tela à esquerda */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Move para a posição original */
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        opacity: 1;
+        transform: translateX(0); /* Começa fora da tela à esquerda */
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-4%); /* Move para a posição original */
+    }
+}
 
 #config-overlay {
     display: flex;
@@ -339,7 +367,7 @@ body {
 /* Card de excluir conta*/
 .card {
     background: #fff;
-    padding: 40px 30px 50px 40px;
+    padding: 40px 30px 45px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     max-width: 400px;
@@ -382,4 +410,6 @@ body {
 .btn-cancel:hover {
     background: #868686;
 }
+
+
 
