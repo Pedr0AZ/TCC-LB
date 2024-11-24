@@ -3,10 +3,12 @@ import cv2
 import mediapipe as mp
 import numpy as np
 import requests
+import time
+import threading
 
 # Tente carregar o dicionário do arquivo pickle
 try:
-    modal_dict = pickle.load(open('./model.p', 'rb'))
+    modal_dict = pickle.load(open('C:\\xampp\\htdocs\\TCC-LB\\capituslos9\\capituslos2\\Unidades2\\Uni1\\atti3\\Scanner_servidor22\\model11.p', 'rb'))
     model = modal_dict['model']
 except Exception as e:
     print(f"Erro ao carregar o modelo: {e}")
@@ -28,18 +30,14 @@ mp_drawing_styles = mp.solutions.drawing_styles
 # Inicializar a detecção de mãos
 hands = mp_hands.Hands(static_image_mode=False, max_num_hands=2, min_detection_confidence=0.3)
 
-labels_dict = {0: 'A', 1: 'B', 2: 'C'}
+labels_dict = {0: '1', 1: '2', 2: '3', 3: '4'}
 
 # Inicialização das variáveis fora do loop
 score = 0
 current_question = 0
-
-questions = [
-    {"question": "Qual é a letra A?", "answer": "A"},
-    {"question": "Qual é a letra B?", "answer": "B"},
-    {"question": "Qual é a letra C?", "answer": "C"},
-    {"question": "Qual é a letra A?", "answer": "A"}
-]
+correct_sign_time = 0  # Tempo em que o sinal correto começou a ser detectado
+correct_threshold = 5  # Precisamos que o sinal correto seja mantido por 5 segundos
+start_time = 0  # Armazenar o tempo quando o sinal correto é detectado
 
 # Função para enviar a pontuação para o Flask
 def enviar_pontuacao(score):
@@ -50,15 +48,51 @@ def enviar_pontuacao(score):
     except requests.exceptions.RequestException as e:
         print(f"Erro ao enviar a pontuação: {e}")
 
+# Função para sincronizar a pergunta atual
+def atualizar_pergunta_atual():
+    global current_question
+    try:
+        response = requests.get('http://127.0.0.1:5000/get-current-question')
+        current_question = response.json().get('current_question', 0)
+    except requests.exceptions.RequestException as e:
+        print(f"Erro ao atualizar a pergunta atual: {e}")
+
+# Função para avançar para a próxima pergunta
+def proxima_pergunta():
+    global current_question
+    current_question += 1
+    try:
+        requests.post('http://127.0.0.1:5000/next-question', json={'current_question': current_question})
+    except requests.exceptions.RequestException as e:
+        print(f"Erro ao avançar para a próxima pergunta: {e}")
+
+questions = [
+    {"question": "Qual é a número 1?", "answer": "1"},
+    {"question": "Qual é a número 2?", "answer": "2"},
+    {"question": "Qual é a número 3?", "answer": "3"},
+    {"question": "Qual é a número 4?", "answer": "4"}
+]
+
+# Atualizar a pergunta atual em uma thread separada
+def atualizar_pergunta_thread():
+    while True:
+        atualizar_pergunta_atual()
+        time.sleep(5)  # Atualiza a pergunta a cada 5 segundos
+
+# Iniciar a thread para atualizar a pergunta
+threading.Thread(target=atualizar_pergunta_thread, daemon=True).start()
+
 while True:
     data_aux = []
-
     ret, frame = cap.read()
 
     # Verificação se o frame foi lido corretamente
     if not ret:
         print("Falha ao capturar a imagem da câmera")
         break
+
+    # Reduzir a resolução do frame
+    frame = cv2.resize(frame, (640, 480))
 
     # Converter a imagem para RGB
     frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -89,9 +123,25 @@ while True:
             # Verificar se a resposta é correta
             predicted_character = labels_dict[int(prediction[0])]
             if predicted_character == questions[current_question]["answer"]:
-                score += 25  # incrementa a pontuação em 25 pontos por resposta certa
-                print("Você acertou!")
-                enviar_pontuacao(score)  # Envia a pontuação para o servidor Flask
+                if start_time == 0:
+                    start_time = time.time()  # Iniciar o contador de tempo
+                elapsed_time = time.time() - start_time
+
+                # Mostrar o contador na tela (se o tempo for menor que o threshold)
+                if elapsed_time <= correct_threshold:
+                    remaining_time = correct_threshold - elapsed_time
+                    cv2.putText(frame, f"Contagem regressiva: {remaining_time:.1f}s", (10, 120), 
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
+
+                # Se o sinal correto for mantido por 5 segundos, incrementar a pontuação
+                if elapsed_time >= correct_threshold:
+                    score += 25  # Incrementa a pontuação em 25 pontos por resposta certa
+                    print("Você acertou!")
+                    threading.Thread(target=enviar_pontuacao, args=(score,)).start()  # Envia a pontuação em uma thread separada
+                    proxima_pergunta()  # Avança para a próxima pergunta
+                    start_time = 0  # Reseta o tempo
+            else:
+                start_time = 0  # Reseta o contador se a resposta for errada
 
             # Exibir a resposta da mão e a pontuação na tela
             cv2.putText(frame, f"Pontuação: {score}", (10, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2, cv2.LINE_AA)
@@ -103,16 +153,8 @@ while True:
     # Mostrar o frame com as landmarks desenhadas
     cv2.imshow('Reconhecimento de Sinais', frame)
 
-    # Verificar se o usuário pressionou a tecla "P" para próxima pergunta
     key = cv2.waitKey(25) & 0xFF
-    if key == ord('p'):
-        current_question += 1
-        if current_question < len(questions):
-            print("Próxima pergunta:", questions[current_question]["question"])
-        else:
-            print("Você terminou o quiz! Sua pontuação foi:", score)
-            break
-    elif key == ord('q'):
+    if key == ord('q'):
         break
 
 # Liberar a captura e destruir todas as janelas
