@@ -21,13 +21,13 @@ def run_script():
 
     try:
         # Executa o script em um processo separado
-        process = subprocess.Popen(['python', 'C:\\xampp\\htdocs\\TCC-LB\\capituslos9\\capituslos2\\Unidades2\\Uni1\\atti3\\Scanner_servidor22\\Escaner_maos11.py'])
+        process = subprocess.Popen(['python', 'C://xampp//htdocs//TCC-LB//capituslos9//capituslos//Unidades//Uni2//atti3//Scanner_servidor33//Escaner_maos.py'])
         return jsonify({'status': 'Script rodando...'})
     except Exception as e:
         return jsonify({'status': 'Erro ao rodar o script', 'error': str(e)})
 
 @app.route('/stop-script', methods=['POST'])
-def stop_script():
+def stop_script(): 
     global process
     if process:
         try:
@@ -55,4 +55,4 @@ def get_score():
     return jsonify({'score': pontuacao_atual})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5002, debug=True)

@@ -8,6 +8,7 @@ app = Flask(__name__)
 # Variável global para armazenar o processo e a pontuação
 process = None
 pontuacao_atual = 0
+current_question = 0  # Nova variável para a pergunta atual
 
 @app.route('/')
 def index():
@@ -21,7 +22,7 @@ def run_script():
 
     try:
         # Executa o script em um processo separado
-        process = subprocess.Popen(['python', 'C://xampp//htdocs//TCC-LB//capituslos9//capituslos//Unidades//Uni2//atti3//Scanner_servidor33//Escaner_maos.py'])
+        process = subprocess.Popen(['python', 'C://xampp//htdocs//TCC-LB//capituslos9//capituslos//Unidades//Uni1//atti3//Scanner_servidor2//Escaner_maos.py'])
         return jsonify({'status': 'Script rodando...'})
     except Exception as e:
         return jsonify({'status': 'Erro ao rodar o script', 'error': str(e)})
@@ -46,13 +47,29 @@ def update_score():
     global pontuacao_atual
     data = request.get_json()
     pontuacao_atual = data['score']
-    print(f"Pontuação atualizada: {pontuacao_atual}")  # Adicionei um print para depuração
+    print(f"Pontuação atualizada: {pontuacao_atual}")
     return jsonify({'status': 'Pontuação atualizada', 'score': pontuacao_atual})
 
+# Rota para obter a pontuação atual
 @app.route('/get-score', methods=['GET'])
 def get_score():
     global pontuacao_atual
     return jsonify({'score': pontuacao_atual})
 
+# Nova rota para obter a pergunta atual
+@app.route('/get-current-question', methods=['GET'])
+def get_current_question():
+    global current_question
+    return jsonify({'current_question': current_question})
+
+# Rota para avançar para a próxima pergunta
+@app.route('/next-question', methods=['POST'])
+def next_question():
+    global current_question
+    data = request.get_json()
+    current_question = data['current_question']
+    print(f"Próxima pergunta: {current_question}")
+    return jsonify({'status': 'Pergunta avançada', 'current_question': current_question})
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5001, debug=True)

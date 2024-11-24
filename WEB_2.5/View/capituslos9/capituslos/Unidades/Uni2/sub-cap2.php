@@ -55,7 +55,7 @@
                 <i class="fas fa-star"></i>
             </div>
             <h2>Etapa - 3</h2>
-            <a href="atti/att3.php">Continuar</a>
+            <a href="http://127.0.0.1:5002">Continuar</a>
             <a href="atti/att3.php" onclick="concluirEtapa(3)">Continuar</a>
             <p class="text-cor-por mt-2" id="progresso3">0%</p>
         </div>

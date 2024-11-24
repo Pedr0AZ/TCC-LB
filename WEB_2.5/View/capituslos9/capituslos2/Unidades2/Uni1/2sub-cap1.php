@@ -64,7 +64,7 @@
                 <i class="fas fa-star"></i>
             </div>
             <h2>Etapa - 4</h2>
-            <a href="atti/2atti.php">Continuar</a>
+            <a href="http://127.0.0.1:5003">Continuar</a>
             <p class="text-cor-por mt-2" id="progresso4">0%</p>
         </div>
     </div>
