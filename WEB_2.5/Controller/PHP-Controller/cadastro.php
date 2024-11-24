@@ -1,5 +1,5 @@
 <?php
-include_once '../../Model/conexao.php';
+include_once ('../../Model/conexao.php');
 include '../../Model/funcoes.php';
 
 try {
