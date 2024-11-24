@@ -30,7 +30,7 @@ mp_drawing_styles = mp.solutions.drawing_styles
 # Inicializar a detecção de mãos
 hands = mp_hands.Hands(static_image_mode=False, max_num_hands=2, min_detection_confidence=0.3)
 
-labels_dict = {0: '1', 1: '2', 2: '3', 3: '4'}
+labels_dict = {0: '0', 1: '1', 2: '2', 3: '3'}
 
 # Inicialização das variáveis fora do loop
 score = 0
@@ -67,10 +67,10 @@ def proxima_pergunta():
         print(f"Erro ao avançar para a próxima pergunta: {e}")
 
 questions = [
+    {"question": "Qual é a número 0?", "answer": "0"},
     {"question": "Qual é a número 1?", "answer": "1"},
     {"question": "Qual é a número 2?", "answer": "2"},
-    {"question": "Qual é a número 3?", "answer": "3"},
-    {"question": "Qual é a número 4?", "answer": "4"}
+    {"question": "Qual é a número 3?", "answer": "3"}
 ]
 
 # Atualizar a pergunta atual em uma thread separada

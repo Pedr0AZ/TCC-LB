@@ -11,7 +11,7 @@ pontuacao_atual = 0
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.php')
 
 @app.route('/run-script', methods=['POST'])
 def run_script():
