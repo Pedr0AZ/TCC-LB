@@ -136,7 +136,7 @@
     <h1>Perguntas</h1>    
 
     <!-- Botão Voltar -->
-    <a href="../3sub-cap1.html"><button id="voltar">Voltar</button></a>
+    <a href="../3sub-cap1.php"><button id="voltar">Voltar</button></a>
 
     <!-- Pergunta -->
     <h1 id="pergunta">Qual é o número 0 em libras?</h1>

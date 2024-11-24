@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etapas</title>
+    <title>Etapas</title> 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="ssub-cap3.css"> <!-- Link para o arquivo CSS separado -->
@@ -13,7 +13,7 @@
     <div class="container">
         <div class="back-link">
             <i class="fas fa-arrow-left"></i>
-            <a href="../../capitulos2.html">Voltar</a>
+            <a href="../../capitulos2.php">Voltar</a>
         </div>
     </div>
 
@@ -31,7 +31,7 @@
                 <i class="fas fa-star"></i>
             </div>
             <h2>Etapa - 1</h2>
-            <a href="atti/att_uni3.html">Continuar</a>
+            <a href="atti/att_uni3.php">Continuar</a>
             <p class="text-cor-por mt-2" id="progresso1">0%</p>
         </div>
 
@@ -42,7 +42,7 @@
                 <i class="fas fa-star"></i>
             </div>
             <h2>Etapa - 2</h2>
-            <a href="atti2/att2_uni3.html">Continuar </a>
+            <a href="atti2/att2_uni3.php">Continuar </a>
             <p class="text-cor-por mt-2" id="progresso2">0%</p>
         </div>
 
@@ -53,7 +53,7 @@
                 <i class="fas fa-star"></i>
             </div>
             <h2>Etapa - 3</h2>
-            <a href="atti/att3_uni3.html">Continuar</a>
+            <a href="atti/att3_uni3.php">Continuar</a>
             <p class="text-cor-por mt-2" id="progresso3">0%</p>
         </div>
 

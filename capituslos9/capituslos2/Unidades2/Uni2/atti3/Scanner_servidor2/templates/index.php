@@ -1,72 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Perguntas</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        /* Estilos globais */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ffffff; /* Branco como cor principal */
-            color: #333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        h1 {
-            color: #003366; /* Azul escuro para títulos */
-            font-size: 2em;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        #question {
-            font-size: 1.5em;
-            color: #003366; /* Azul escuro para a pergunta */
-            margin: 20px;
-            text-align: center;
-        }
-
-        /* Botões */
-        button {
-            background-color: #003366; /* Azul como cor principal do botão */
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin: 10px;
-        }
-
-        button:hover {
-            background-color: #0055cc; /* Cor de hover para o botão */
-        }
-
-        /* Status e pontuação */
-        #status, #score {
-            font-size: 1.2em;
-            margin: 10px;
-            color: #333;
-        }
-
-        /* Responsividade */
-        @media (max-width: 600px) {
-            button {
-                width: 80%;
-                font-size: 1em;
-            }
-        }
-    </style>
 </head>
 <body>
     <h1>Bem-vindo ao Sistema de Perguntas!</h1>

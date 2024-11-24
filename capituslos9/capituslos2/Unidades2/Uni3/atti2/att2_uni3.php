@@ -150,7 +150,7 @@
 <body>
     <h1>Perguntas</h1>
 
-    <a href="../2sub-cap2.html"><button id="voltar">Voltar</button></a>
+    <a href="../2sub-cap2.php"><button id="voltar">Voltar</button></a>
 
     <div id="pergunta-container">
         <img id="imagem-pergunta" src="" alt="Imagem da pergunta">
@@ -159,19 +159,19 @@
 
     <div id="imagens">
       <div class="linha">
-        <img src="./img/4_teclado.png" alt="0" onclick="verificarResposta(this)">
-        <img src="./img/5_teclado.png" alt="1" onclick="verificarResposta(this)">
+        <img src="./img/0_teclado.jpg" alt="0" onclick="verificarResposta(this)">
+        <img src="./img/8_teclado.jpg" alt="1" onclick="verificarResposta(this)">
       </div>
       <div class="linha">
-        <img src="./img/6_teclado.png" alt="2" onclick="verificarResposta(this)">
-        <img src="./img/7_teclado.jpg" alt="3" onclick="verificarResposta(this)">
+        <img src="./img/9_teclado.png" alt="2" onclick="verificarResposta(this)">
+        <img src="./img/10_teclado.jpg" alt="3" onclick="verificarResposta(this)">
       </div>
     </div>
 
     <div id="feedback"></div>
     <button id="proximo" onclick="proximaPergunta()">Próxima Pergunta</button>
-    <a href="../../../capitulos2.html"><button id="voltarCapitulos">Voltar aos Capítulos</button></a>
-    <a href="../2sub-cap2.html"><button id="voltarInicio">Voltar ao Início</button></a>
+    <a href="../../../capitulos2.php"><button id="voltarCapitulos">Voltar aos Capítulos</button></a>
+    <a href="../2sub-cap3.php"><button id="voltarInicio">Voltar ao Início</button></a>
 
     <div class="progress">
         <div class="active"></div>
@@ -184,24 +184,24 @@
         let progresso = parseInt(localStorage.getItem('progressoEtapa2')) || 0;
         let perguntas = [
             {
-                imagem: './img/4.jpg',
-                pergunta: 'Qual número é formada com a mão com os dedos para baixo?',
+                imagem: './img/0.jpg',
+                pergunta: 'Qual letra é formada com a mão fechada?',
                 respostaCorreta: 0
             },
             {
-                imagem: './img/5.jpg',
-                pergunta: 'Qual número tem a forma com entre aspas?',
-                respostaCorreta: 0
+                imagem: './img/8.png',
+                pergunta: 'Qual letra tem a forma arredondada?',
+                respostaCorreta: 3
             },
             {
-                imagem: './img/6.jpg',
-                pergunta: 'Qual número é formada com os dedos em círcolo com o dedão para cima?',
-                respostaCorreta: 0
+                imagem: './img/9.png',
+                pergunta: 'Qual letra é formada com os dedos esticados?',
+                respostaCorreta: 1
             },
             {
-                imagem: './img/7.jpg',
-                pergunta: 'Qual número é formada com um ok?',
-                respostaCorreta: 0
+                imagem: './img/10.png',
+                pergunta: 'Qual letra é formada com um ok?',
+                respostaCorreta: 3
             }
         ];
 

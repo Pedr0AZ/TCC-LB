@@ -12,7 +12,7 @@ current_question = 0  # Nova variável para a pergunta atual
 
 @app.route('/')
 def index():
-    return render_template('index.php')
+    return render_template('index.html')
 
 @app.route('/run-script', methods=['POST'])
 def run_script():

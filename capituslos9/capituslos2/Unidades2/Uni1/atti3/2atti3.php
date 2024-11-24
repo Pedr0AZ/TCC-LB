@@ -153,10 +153,10 @@
     </style>
 </head>
 <body>
-    <h1>Perguntas</h1>    
+    <h1>Perguntas</h1>   
 
     <!-- Botão Voltar -->
-    <a href="../sub-cap1.html"><button id="voltar">Voltar</button></a>
+    <a href="../sub-cap1.php"><button id="voltar">Voltar</button></a>
 
     <!-- Container da pergunta com imagem -->
     <div id="pergunta-container">
@@ -289,7 +289,7 @@
         }
 
         function voltarPagina() {
-            window.location.href = "capitulos.html";
+            window.location.href = "capitulos.php";
         }
 
         // Exibe a imagem da primeira pergunta ao carregar

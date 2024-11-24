@@ -11,7 +11,7 @@ pontuacao_atual = 0
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.php')
 
 @app.route('/run-script', methods=['POST'])
 def run_script():
@@ -21,7 +21,7 @@ def run_script():
 
     try:
         # Executa o script em um processo separado
-        process = subprocess.Popen(['python', 'C:\\Users\\PEDRO-PC\\Desktop\\Scanner_servidor\\Escaner_maos.py'])
+        process = subprocess.Popen(['python', 'Scanner_servidor2\Escaner_maos.py'])
         return jsonify({'status': 'Script rodando...'})
     except Exception as e:
         return jsonify({'status': 'Erro ao rodar o script', 'error': str(e)})

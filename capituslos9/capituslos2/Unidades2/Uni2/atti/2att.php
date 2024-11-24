@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,25 +26,10 @@
             margin-top: 20px;
         }
 
-        #pergunta-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
         #pergunta {
             font-size: 1.5em;
             color: #003366; /* Azul escuro para a pergunta */
             margin: 20px;
-        }
-
-        #imagem-pergunta {
-            width: 200px;
-            height: 200px;
-            object-fit: contain;
-            border-radius: 10px;
-            margin-bottom: 20px;
         }
 
         /* Estilo das linhas com imagens */
@@ -135,11 +120,6 @@
                 height: 80px;
             }
 
-            #imagem-pergunta {
-                width: 150px;
-                height: 150px;
-            }
-
             #proximo, #voltarCapitulos {
                 width: 80%;
                 font-size: 1em;
@@ -156,23 +136,20 @@
     <h1>Perguntas</h1>    
 
     <!-- Botão Voltar -->
-    <a href="../sub-cap1.html"><button id="voltar">Voltar</button></a>
+    <a href="../2sub-cap2.php"><button id="voltar">Voltar</button></a>
 
-    <!-- Container da pergunta com imagem -->
-    <div id="pergunta-container">
-        <img id="imagem-pergunta" src="" alt="Imagem da pergunta">
-        <h1 id="pergunta">Qual letra é formada com a mão fechada?</h1>
-    </div>
+    <!-- Pergunta -->
+    <h1 id="pergunta">Qual é o número 4 em libras?</h1>
     
     <!-- Imagens clicáveis -->
     <div id="imagens">
       <div class="linha">
-        <img src="./img/A_teclado.png" alt="0" onclick="verificarResposta(this)">
-        <img src="./img/B_teclado.png" alt="1" onclick="verificarResposta(this)">
+        <img src="./img/5.jpg" alt="0" onclick="verificarResposta(this)">
+        <img src="./img/7.jpg" alt="1" onclick="verificarResposta(this)">
       </div>
       <div class="linha">
-        <img src="./img/C_teclado.png" alt="2" onclick="verificarResposta(this)">
-        <img src="./img/D_teclado.png" alt="3" onclick="verificarResposta(this)">
+        <img src="./img/6.jpg" alt="2" onclick="verificarResposta(this)">
+        <img src="./img/4.jpg" alt="3" onclick="verificarResposta(this)">
       </div>
     </div>
 
@@ -191,36 +168,30 @@
     <script>
         let perguntas = [
             {
-                pergunta: "Qual letra é formada com a mão fechada?",
-                imagemPergunta: "A_teclado", // Imagem específica para a pergunta
-                respostas: ["A_teclado", "B_teclado", "C_teclado", "D_teclado"],
+                pergunta: "Qual é o número 4 em libras?",
+                respostas: ["6", "5", "7", "4"],
+                correta: 3,
+                imagens: ["6", "5", "7", "4"]
+            },
+            {
+                pergunta: "Qual é o número 5 em libras?",
+                respostas: ["5", "4", "6", "7"],
                 correta: 0,
-                imagens: ["A_teclado", "B_teclado", "C_teclado", "D_teclado"]
+                imagens: ["5", "4", "6", "7"]
             },
             {
-                pergunta: "Qual é a letra B em libras?",
-                imagemPergunta: "B_teclado", // Imagem específica para a pergunta
-                respostas: ["B_teclado", "D_teclado", "C_teclado", "A_teclado"],
+                pergunta: "Qual é o número 6 em libras?",
+                respostas: ["7", "4", "5", "6"],
+                correta: 3,
+                imagens: ["7", "4", "5", "6"]
+            },
+            {
+                pergunta: "Qual é o número 7 em libras?",
+                respostas: ["7", "6", "5", "4"],
                 correta: 0,
-                imagens: ["B_teclado", "D_teclado", "C_teclado", "A_teclado"]
+                imagens: ["7", "6", "5", "4"]
             },
-            {
-                pergunta: "Qual é a letra C em libras?",
-                imagemPergunta: "C_teclado", // Imagem específica para a pergunta
-                respostas: ["B_teclado", "C_teclado", "A_teclado", "D_teclado"],
-                correta: 1,
-                imagens: ["B_teclado", "C_teclado", "A_teclado", "D_teclado"]
-            },
-            {
-                pergunta: "Qual é a letra D em libras?",
-                imagemPergunta: "D_teclado", // Imagem específica para a pergunta
-                respostas: ["A_teclado", "B_teclado", "D_teclado", "C_teclado"],
-                correta: 2,
-                imagens: ["A_teclado", "B_teclado", "D_teclado", "C_teclado"]
-            },
-            {
-               // colocar mais perguntas    
-            }
+            // Adicione mais perguntas aqui
         ];
 
         let atual = 0;
@@ -247,60 +218,54 @@
             }
         }
 
+        function atualizarProgressoEtapa(etapa) {
+            let progresso = parseInt(localStorage.getItem(`progressoEtapa${etapa}`)) || 0; // Pega o progresso da etapa específica
+            progresso += 25; // Aumenta 25% (ou ajuste conforme necessário)
+            if (progresso > 100) progresso = 100; // Limita a 100%
+            localStorage.setItem(`progressoEtapa${etapa}`, progresso); // Armazena o novo progresso
+        }
+
         function verificarResposta(img) {
             let resposta = perguntas[atual].respostas[img.alt];
             let correta = perguntas[atual].correta;
-
+        
             if (img.alt == correta) {
                 document.getElementById("proximo").style.display = "block"; // Mostra o botão de próxima pergunta
-
                 document.getElementById("audio-acerto").play(); // Toca áudio de acerto
                 alert("Parabéns, você acertou!");
-
+                
+                atualizarProgressoEtapa(1); // Atualiza o progresso da Etapa 1 (25% a cada acerto)
             } else {
                 document.getElementById("audio-erro").play(); // Toca áudio de erro
                 alert("Erro, tente novamente!");
             }
         }
-
         function proximaPergunta() {
             atual++;
             if (atual >= perguntas.length) {
-                document.getElementById("pergunta").innerHTML = "Parabéns, você concluiu todas as perguntas!";
-                document.getElementById("imagens").style.display = "none"; // Esconde as imagens
-                document.getElementById("imagem-pergunta").style.display = "none"; // Esconde a imagem da pergunta
+                atual = 0; // Volta para a primeira pergunta se terminar
+                document.getElementById("proximo").style.display = "none"; // Esconde o botão "Próxima Pergunta"
                 document.getElementById("voltarCapitulos").style.display = "block"; // Mostra o botão "Voltar para Capítulos"
             } else {
                 document.getElementById("pergunta").innerHTML = perguntas[atual].pergunta;
-
-                // Atualiza a imagem da pergunta
-                document.getElementById("imagem-pergunta").style.display = "block"; // Exibe a imagem
-                document.getElementById("imagem-pergunta").src = perguntas[atual].imagemPergunta ? `./img/${perguntas[atual].imagemPergunta}.png` : ""; // Define a imagem específica para a pergunta
-
                 let imgs = document.querySelectorAll("#imagens img");
                 for (let i = 0; i < imgs.length; i++) {
-                    imgs[i].src = perguntas[atual].imagens.length > 0 ? `./img/${perguntas[atual].imagens[i]}.png` : ""; // Atualiza as imagens de resposta ou esconde se não houver
+                    imgs[i].src = `./img/${perguntas[atual].imagens[i]}.jpg`; // Atualiza as imagens
                     imgs[i].alt = i; // Atualiza o alt das imagens
                 }
-
                 document.getElementById("proximo").style.display = "none"; // Esconde o botão até o próximo acerto/erro
             }
             atualizarProgresso(); // Atualiza as bolinhas de progresso
         }
 
+        // Função do botão "Voltar"
         function voltarPagina() {
-            window.location.href = "capitulos.html";
+            window.history.back(); // Retorna para a página anterior
         }
 
-        // Exibe a imagem da primeira pergunta ao carregar
-        window.onload = function() {
-            inicializarProgresso();
-            atualizarProgresso();
-            
-            // Exibe a imagem da primeira pergunta
-            document.getElementById("imagem-pergunta").style.display = "block"; // Exibe a imagem
-            document.getElementById("imagem-pergunta").src = perguntas[atual].imagemPergunta ? `./img/${perguntas[atual].imagemPergunta}.png` : ""; // Define a imagem da pergunta inicial
-        }
+        // Inicia com a primeira pergunta e define as bolinhas de progresso
+        inicializarProgresso();
+        atualizarProgresso();
     </script>
 </body>
 </html>
