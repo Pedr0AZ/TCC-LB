@@ -21,7 +21,7 @@ def run_script():
 
     try:
         # Executa o script em um processo separado
-        process = subprocess.Popen(['python', 'C:\\xampp\\htdocs\\TCC-LB\\capituslos9\\capituslos2\\Unidades2\\Uni1\\atti3\\Scanner_servidor22\\Escaner_maos11.py'])
+        process = subprocess.Popen(['python', 'C:\\xampp\\htdocs\\TCC-LB\\WEB_2.5\\View\\capituslos9\\capituslos2\\Unidades2\\Uni1\\atti3\\Scanner_servidor22\\Escaner_maos11.py'])
         return jsonify({'status': 'Script rodando...'})
     except Exception as e:
         return jsonify({'status': 'Erro ao rodar o script', 'error': str(e)})
