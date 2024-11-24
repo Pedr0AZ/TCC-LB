@@ -1,6 +1,7 @@
 /* Barra lateral */
 .sidebar {
-    position: fixed; /* Mantém a barra fixa na lateral */
+    position: fixed;
+    /* Mantém a barra fixa na lateral */
     left: 0;
     top: 0;
     width: 280px;
