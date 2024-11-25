@@ -47,7 +47,7 @@
             Vamos Iniciar o aprendizado?
         </p>
         <p>Com um aprendizado simples, rápido e prático! você pode aprender o fundamental de Libras em pouco tempo, começe agora!</p>
-        <a href="capituslos9/capituslos2/capitulos2.php" class="btn-sessão">Descubra as atividades →</a>
+        <a href="capituslos9/capituslos/capitulos.php" class="btn-sessão">Descubra as atividades →</a>
     </div>
     <div class="section-img">
         <img src="Libras Imagem1.png" alt="Imagem representativa">

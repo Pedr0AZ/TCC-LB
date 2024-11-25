@@ -42,7 +42,7 @@ start_time = 0  # Armazenar o tempo quando o sinal correto é detectado
 # Função para enviar a pontuação para o Flask
 def enviar_pontuacao(score):
     try:
-        response = requests.post('http://127.0.0.1:5000/update-score', json={'score': score})
+        response = requests.post('http://127.0.0.1:5001/update-score', json={'score': score})
         response.raise_for_status()  # Levanta um erro para códigos de resposta 4xx/5xx
         print("Pontuação enviada com sucesso.")
     except requests.exceptions.RequestException as e:
@@ -52,7 +52,7 @@ def enviar_pontuacao(score):
 def atualizar_pergunta_atual():
     global current_question
     try:
-        response = requests.get('http://127.0.0.1:5000/get-current-question')
+        response = requests.get('http://127.0.0.1:5001/get-current-question')
         current_question = response.json().get('current_question', 0)
     except requests.exceptions.RequestException as e:
         print(f"Erro ao atualizar a pergunta atual: {e}")
@@ -62,7 +62,7 @@ def proxima_pergunta():
     global current_question
     current_question += 1
     try:
-        requests.post('http://127.0.0.1:5000/next-question', json={'current_question': current_question})
+        requests.post('http://127.0.0.1:5001/next-question', json={'current_question': current_question})
     except requests.exceptions.RequestException as e:
         print(f"Erro ao avançar para a próxima pergunta: {e}")
 
