@@ -1,3 +1,4 @@
+<?php include "TopMenu.php"; ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -24,11 +25,11 @@
             </button>
         </li>
         <li>
-            <button class="expand-btn">
+            <a href="capituslos9/capituslos/capitulos.php" class="expand-btn">
                 <i class="fas fa-folder"></i>
                 <span>Atividades</span>
                 <i class="fas fa-chevron-down"></i>
-            </button>
+            </a>
         </li>
         <li>
             <button class="expand-btn">
@@ -79,5 +80,5 @@
         <script src="JS-View/BarradeMenu.js"></script>
 
 </body>
-<?php include "TopMenu.php"; ?>
+
 </html>

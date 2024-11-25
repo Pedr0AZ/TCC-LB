@@ -142,7 +142,7 @@
 
             #voltar {
                 font-size: 0.9em;
-                padding: 8px  16px;
+                padding: 8px 16px;
             }
         }
     </style>
@@ -150,22 +150,22 @@
 <body>
     <h1>Perguntas</h1>
 
-    <a href="../sub-cap1.php"><button id="voltar">Voltar</button></a>
+    <a href="../sub-cap1.html"><button id="voltar">Voltar</button></a>
 
     <div id="pergunta-container">
-        <img id ="imagem-pergunta" src="" alt="Imagem da pergunta">
+        <img id="imagem-pergunta" src="" alt="Imagem da pergunta">
         <h1 id="pergunta">Qual letra é formada com a mão fechada?</h1>
     </div>
 
     <div id="imagens">
-      <div class="linha">
-        <img src="./img/A_teclado.png" alt="0" onclick="verificarResposta(this)">
-        <img src="./img/B_teclado.png" alt="1" onclick="verificarResposta(this)">
-      </div>
-      <div class="linha">
-        <img src="./img/C_teclado.png" alt="2" onclick="verificarResposta(this)">
-        <img src="./img/D_teclado.png" alt="3" onclick="verificarResposta(this)">
-      </div>
+        <div class="linha">
+            <img src="./img/A_teclado.png" alt="0" onclick="verificarResposta(this)">
+            <img src="./img/B_teclado.png" alt="1" onclick="verificarResposta(this)">
+        </div>
+        <div class="linha">
+            <img src="./img/C_teclado.png" alt="2" onclick="verificarResposta(this)">
+            <img src="./img/D_teclado.png" alt="3" onclick="verificarResposta(this)">
+        </div>
     </div>
 
     <div id="feedback"></div>
@@ -178,6 +178,7 @@
         <div></div>
         <div></div>
     </div>
+    <button id="proximo" onclick="proximaPergunta()">Próxima Pergunta</button>
 
     <script>
         let progresso = parseInt(localStorage.getItem('progressoEtapa2')) || 0;
@@ -205,14 +206,14 @@
         ];
     
         let perguntaAtual = 0;
-    
+
         // Função para exibir a pergunta e imagem
         function mostrarPergunta() {
             let pergunta = perguntas[perguntaAtual];
             document.getElementById('imagem-pergunta').src = pergunta.imagem;
             document.getElementById('pergunta').textContent = pergunta.pergunta;
             document.getElementById('feedback').textContent = '';
-            document.getElementById('proximo').style.display = 'none'; // Esconde o botão "Próxima Pergunta"
+            document.getElementById('proximo').style.display = 'none';
         }
     
         // Função para verificar a resposta
@@ -222,16 +223,16 @@
             
             if (resposta === pergunta.respostaCorreta) {
                 document.getElementById('feedback').textContent = 'Correto!';
-                progresso += 25; // Incrementa o progresso
-                if (progresso > 100) progresso = 100; // Limita o progresso a 100%
+                progresso += 25;
+                if (progresso > 100) progresso = 100;
                 localStorage.setItem('progressoEtapa2', progresso);
-                atualizarProgresso(); // Atualiza o progresso
-                document.getElementById('proximo').style.display = 'block'; // Mostra o botão "Próxima Pergunta"
+                atualizarProgresso();
+                document.getElementById('proximo').style.display = 'block';
             } else {
                 document.getElementById('feedback').textContent = 'Incorreto. Tente novamente.';
             }
         }
-    
+
         // Função para passar para a próxima pergunta
         function proximaPergunta() {
             perguntaAtual++;
@@ -239,22 +240,20 @@
                 mostrarPergunta();
             } else {
                 alert('Você concluiu todas as perguntas!');
-                document.getElementById('proximo').style.display = 'none'; // Esconde o botão "Próxima Pergunta"
+                document.getElementById('proximo').style.display = 'none';
                 document.getElementById('voltarCapitulos').style.display = 'block';
                 document.getElementById('voltarInicio').style.display = 'block';
-    
-                // Resetando as bolinhas e porcentagem após todas as perguntas
+
                 progresso = 0;
                 localStorage.setItem('progressoEtapa2', progresso);
-                atualizarProgresso(); // Atualiza as bolinhas
-                atualizarPorcentagem(); // Atualiza a porcentagem
+                atualizarProgresso();
             }
         }
     
         // Função para atualizar o progresso das bolinhas
         function atualizarProgresso() {
             const bolinhas = document.querySelectorAll('.progress div');
-            let progressoAtual = Math.floor(progresso / 25); // Calcula o progresso atual
+            let progressoAtual = Math.floor(progresso / 25);
             bolinhas.forEach((bolinha, index) => {
                 if (index < progressoAtual) {
                     bolinha.classList.add('active');
@@ -263,21 +262,11 @@
                 }
             });
         }
-    
-        // Função para atualizar a porcentagem
-        function atualizarPorcentagem() {
-            let porcentagem = Math.floor(progresso);
-            document.getElementById('porcentagem').textContent = `Progresso: ${porcentagem}%`;
-        }
-    
+
         window.onload = function() {
-            mostrarPergunta(); // Mostra a primeira pergunta ao carregar a página
-            atualizarProgresso(); // Atualiza o progresso das bolinhas ao carregar
-            atualizarPorcentagem(); // Atualiza a porcentagem ao carregar
+            mostrarPergunta();
+            atualizarProgresso();
         };
     </script>
-    
-    
-    
 </body>
 </html>

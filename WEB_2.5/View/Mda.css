@@ -2,6 +2,7 @@
 .sidebar {
     position: fixed;
     left: 0;
+    margin-top: 9.5vh;
     top: 0;
     width: 280px;
     height: 100%;
@@ -53,7 +54,7 @@
 
 /* Alinhar o texto ao lado do ícone hambúrguer */
 #toggle-sidebar {
-    font-size: 1.5rem;
+    font-size: 2rem;
     display: inline-block;
     cursor: pointer;
     background: none;
@@ -66,7 +67,6 @@
 }
 
 .sidebar-header {
-    margin-top: 4.7vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -131,6 +131,7 @@
 }
 
 .sidebar-menu .expand-btn {
+    text-decoration: none;
     background: none;
     border: none;
     color: #f1faee;
@@ -193,4 +194,48 @@ li>i {
 .sidebar.collapsed #menu-text {
     opacity: 0;
     visibility: hidden;
+}
+
+.animated-background {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    border-radius: 43% 57% 51% 49% / 64% 37% 63% 36%;
+    animation: move 5s infinite alternate ease-in-out, morph 6s infinite alternate ease-in-out;
+}
+
+@keyframes move {
+    0% {
+        top: 10%;
+        left: 20%;
+    }
+    25% {
+        top: 20%;
+        left: 60%;
+    }
+    50% {
+        top: 50%;
+        left: 40%;
+    }
+    75% {
+        top: 70%;
+        left: 10%;
+    }
+    100% {
+        top: 30%;
+        left: 80%;
+    }
+}
+
+@keyframes morph {
+    0% {
+        border-radius: 43% 57% 51% 49% / 64% 37% 63% 36%;
+    }
+    50% {
+        border-radius: 60% 40% 70% 30% / 50% 50% 60% 40%;
+    }
+    100% {
+        border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    }
 }
