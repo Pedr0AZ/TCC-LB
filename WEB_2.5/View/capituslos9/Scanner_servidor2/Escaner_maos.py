@@ -8,7 +8,7 @@ import threading
 
 # Tente carregar o dicionário do arquivo pickle
 try:
-    modal_dict = pickle.load(open('./model.p', 'rb'))
+    modal_dict = pickle.load(open('/opt/lampp/htdocs/TCC-LB/WEB_2.5/View/capituslos9/Scanner_servidor2/model.p', 'rb'))
     model = modal_dict['model']
 except Exception as e:
     print(f"Erro ao carregar o modelo: {e}")

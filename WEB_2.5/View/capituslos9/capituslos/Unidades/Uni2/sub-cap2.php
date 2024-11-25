@@ -32,7 +32,7 @@
             </div>
             <h2>Etapa - 1</h2>
             <a href="atti/att.php">Continuar</a>
-            <a href="atti/att.php" onclick="concluirEtapa(1)">Continuar</a>
+
             <p class="text-cor-por mt-2" id="progresso1">0%</p>
         </div>
 
@@ -44,7 +44,6 @@
             </div>
             <h2>Etapa - 2</h2>
             <a href="atti2/att2.php">Continuar </a>
-            <a href="atti2/att2.php" onclick="concluirEtapa(2)">Continuar</a>
             <p class="text-cor-por mt-2" id="progresso2">0%</p>
         </div>
 
@@ -56,13 +55,11 @@
             </div>
             <h2>Etapa - 3</h2>
             <a href="http://127.0.0.1:5002">Continuar</a>
-            <a href="atti/att3.php" onclick="concluirEtapa(3)">Continuar</a>
             <p class="text-cor-por mt-2" id="progresso3">0%</p>
         </div>
 
 
     
-    <button onclick="zerarProgresso()">Zerar Progresso</button>
 
     <script>
         function concluirEtapa(etapa) {

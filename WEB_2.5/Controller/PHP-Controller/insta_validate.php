@@ -1,4 +1,9 @@
 <?php
+
+// Acabou não sendo utilizada nem terminada, o código daqui mostraria mensagens instantâneas
+// informando certo problema da forma que está sendo inserida uma informação num campo
+// ex: nome com @ já mostraria uma mensagem avisando que não é permitido caracteres especiais
+
 session_start();
 
 $mensagens = [

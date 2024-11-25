@@ -150,7 +150,7 @@
 <body>
     <h1>Perguntas</h1>
 
-    <a href="../sub-cap1.html"><button id="voltar">Voltar</button></a>
+    <a href="../sub-cap1.php"><button id="voltar">Voltar</button></a>
 
     <div id="pergunta-container">
         <img id="imagem-pergunta" src="" alt="Imagem da pergunta">

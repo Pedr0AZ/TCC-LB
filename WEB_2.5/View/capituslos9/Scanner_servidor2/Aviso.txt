@@ -1,0 +1,7 @@
+Esse Scanner foi criado no início de seu desenvolvimento e 
+não está sendo usado
+
+Os "escaners" usados estão dentro de capituslos9, capituslos (que é o capítulo 1)
+
+Eu não tenho certeza se o código do scanner nos capituslos2 e 3 estão
+atualizados

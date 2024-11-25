@@ -5,6 +5,7 @@ import numpy as np
 import requests
 
 # Tente carregar o dicionário do arquivo pickle
+#Se não funcionar, coloque o caminho absoluto ou mude o nome do arquivo app.py ou do model.p
 try:
     modal_dict = pickle.load(open('./model.p', 'rb'))
     model = modal_dict['model']

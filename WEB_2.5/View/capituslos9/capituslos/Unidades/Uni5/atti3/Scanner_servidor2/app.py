@@ -21,6 +21,7 @@ def run_script():
 
     try:
         # Executa o script em um processo separado
+        #Se não funcionar, coloque o caminho absoluto ou mude o nome desse arquivo app.py
         process = subprocess.Popen(['python', 'C:\\Users\\PEDRO-PC\\Desktop\\Scanner_servidor\\Escaner_maos.py'])
         return jsonify({'status': 'Script rodando...'})
     except Exception as e:
