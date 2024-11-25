@@ -1,7 +1,6 @@
 /* Barra lateral */
 .sidebar {
     position: fixed;
-    /* Mantém a barra fixa na lateral */
     left: 0;
     top: 0;
     width: 280px;
@@ -11,7 +10,44 @@
     border-right: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 2px 0 15px rgba(0, 0, 0, 0.5);
     overflow: hidden;
-    transition: width 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out; /* Animação para a largura da barra lateral */
+}
+
+/* Quando a barra lateral estiver colapsada */
+.sidebar.collapsed {
+    width: 80px; /* Largura reduzida quando a barra lateral está colapsada */
+}
+
+/* Estilo do conteúdo para não ficar atrás da barra lateral */
+.section, .manchete {
+    margin-left: 13vh;
+    margin-right: 7vh; /* Padrão, quando a barra lateral está expandida */
+    padding: 20px;
+    transition: margin-left 0.3s ease-in-out; /* Transição suave para a margem */
+}
+
+/* Estilo da manchete */
+.manchete {
+    padding: 20px;
+    background-color: #21252711;
+    color: #000000;
+    margin-top: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: margin-left 0.3s ease-in-out; /* Animação suave também para a manchete */
+}
+
+/* Estilo da manchete para o título e o parágrafo */
+.manchete h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.manchete p {
+    font-size: 1.2rem;
+    line-height: 1.5;
 }
 
 
