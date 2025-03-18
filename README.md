@@ -8,7 +8,7 @@ O foco do site é ensinar os sinais das letras do alfabeto, os números de 0 a 1
 
 - **Alfabeto em Libras**: Ensinar os sinais de todas as letras do alfabeto.
 - **Números em Libras**: Ensinar os sinais dos números de 0 a 10.
-- **Palavras Comuns**: Ensinar os sinais de palavras do cotidiano, facilitando o aprendizado prático.
+
 
 ## Tecnologias Utilizadas
 
